@@ -5,19 +5,23 @@ import kitchen from "../../assets/shop-collection3.png";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 
-const ShopCollection = () => {
+const ShopCollectionSection = () => {
+
+
   return (
-    <div className="container mx-auto px-2 mt-6 ">
+    <div className="container mx-auto px-2 mt-10">
       {/* Top Head */}
       <div className="md:flex justify-between items-center">
-        <h1 className="text-4xl md:text-5xl font-semibold w-full mb-5 tracking-wide">
+        <h1 className="text-4xl md:text-5xl lg:text-7xl  font-semibold w-full mb-5 tracking-wide">
           Simply Unique <span className="text-gray-500">/</span> <br />
           Simply Better <span className="text-gray-500">.</span>
         </h1>
         <p className="text-gray-600">
           {" "}
-          <span className="font-semibold text-black">3legant</span> is a gift &
-          decorations store based in HCMC, Vietnam. Est since 2019.{" "}
+          <span className="font-semibold text-black lg:text-2xl">
+            3legant
+          </span>{" "}
+          is a gift & decorations store based in HCMC, Vietnam. Est since 2019.{" "}
         </p>
       </div>
 
@@ -26,9 +30,15 @@ const ShopCollection = () => {
         {/* Living Room */}
         <div className="md:col-span-2 md:row-span-2 relative">
           <div className="absolute lg:left-14 lg:top-20 md:left-10 md:top-10 lg:space-y-2 left-14 top-16 md:space-y-0">
-            <h1 className="lg:text-3xl md:text-xl font-semibold text-2xl">Living Room</h1>
-            <Link to="/collections" className="inline-flex items-center gap-2 text-lg hover:text-blue-500 transition duration-300 border-b-2 border-b-black hover:border-b-blue-500 lg:text-xl">Shop Now
-            <BsArrowRight className='h-4 w-4 md:h-6 md:w-6 ' />
+            <h1 className="lg:text-3xl md:text-xl font-semibold text-2xl">
+              Living Room
+            </h1>
+            <Link
+              to="/collections"
+              className="inline-flex items-center gap-2 text-lg hover:text-blue-500 transition duration-300 border-b-2 border-b-black hover:border-b-blue-500 lg:text-xl"
+            >
+              Shop Now
+              <BsArrowRight className="h-4 w-4 md:h-6 md:w-6 " />
             </Link>
           </div>
           <img
@@ -41,9 +51,15 @@ const ShopCollection = () => {
         {/* Bedroom */}
         <div className="md:col-span-2 relative">
           <div className="absolute lg:left-14 lg:bottom-20 md:left-8 md:bottom-10 left-14 bottom-20 lg:space-y-2 md:space-y-0">
-            <h1 className="lg:text-3xl md:text-xl font-semibold text-2xl">Bed Room</h1>
-            <Link to="/collections" className="inline-flex items-center gap-2 text-lg hover:text-blue-500 transition duration-300 border-b-2 border-b-black hover:border-b-blue-500 lg:text-xl">Shop Now
-            <BsArrowRight className='h-4 w-4 md:h-6 md:w-6 ' />
+            <h1 className="lg:text-3xl md:text-xl font-semibold text-2xl">
+              Bed Room
+            </h1>
+            <Link
+              to="/collections"
+              className="inline-flex items-center gap-2 text-lg hover:text-blue-500 transition duration-300 border-b-2 border-b-black hover:border-b-blue-500 lg:text-xl"
+            >
+              Shop Now
+              <BsArrowRight className="h-4 w-4 md:h-6 md:w-6 " />
             </Link>
           </div>
           <img
@@ -56,9 +72,15 @@ const ShopCollection = () => {
         {/* Kitchen */}
         <div className="md:col-span-2 relative">
           <div className="absolute lg:left-14 lg:bottom-20 md:left-8 md:bottom-10 left-14 bottom-20 lg:space-y-2 md:space-y-0">
-            <h1 className="lg:text-3xl md:text-xl font-semibold text-2xl">Kitchen</h1>
-            <Link to="/collections" className="inline-flex items-center gap-2 text-lg hover:text-blue-500 transition duration-300 border-b-2 border-b-black hover:border-b-blue-500 lg:text-xl">Shop Now
-            <BsArrowRight className='h-4 w-4 md:h-6 md:w-6 ' />
+            <h1 className="lg:text-3xl md:text-xl font-semibold text-2xl">
+              Kitchen
+            </h1>
+            <Link
+              to="/collections"
+              className="inline-flex items-center gap-2 text-lg hover:text-blue-500 transition duration-300 border-b-2 border-b-black hover:border-b-blue-500 lg:text-xl"
+            >
+              Shop Now
+              <BsArrowRight className="h-4 w-4 md:h-6 md:w-6 " />
             </Link>
           </div>
           <img
@@ -72,4 +94,4 @@ const ShopCollection = () => {
   );
 };
 
-export default ShopCollection;
+export default ShopCollectionSection;

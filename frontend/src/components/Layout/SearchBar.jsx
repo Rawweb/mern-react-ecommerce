@@ -45,23 +45,23 @@ const SeacrhBar = () => {
             {/* Search Icon */}
             <button
               type="submit"
-              className="absolute right-2 top-1/2 transform -translate-y-1/2  text-gray-600 p-2 hover:text-gray-900"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2  text-gray-600 p-2 hover:text-blue-500"
             >
-              <LuSearch className="h-5 w-5" />
+              <LuSearch className="h-6 w-6" />
             </button>
           </div>
           {/* close Icon */}
           <button
             type="button"
             onClick={handleSearchToggle}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-900"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-blue-500"
           >
-            <MdClose className="h-6 w-6" />
+            <MdClose className="h-7 w-7" />
           </button>
         </form>
       ) : (
         <button onClick={handleSearchToggle}>
-          <LuSearch className="h-5 w-5 text-gray-700 hover:text-gray-900" />
+          <LuSearch className="h-6 w-6 text-gray-700 hover:text-blue-500" />
         </button>
       )}
     </div>

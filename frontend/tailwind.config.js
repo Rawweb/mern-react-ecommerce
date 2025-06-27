@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         primary: '#F4F4F4',
+        sec:'#F3F5F7'
       },
 
       animation: {

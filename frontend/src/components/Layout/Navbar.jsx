@@ -53,7 +53,7 @@ const Navbar = () => {
           <NavLink
             to="/home"
             className={({ isActive }) =>
-              `text-sm font-medium uppercase transition duration-300 ${
+              ` font-medium uppercase transition duration-300 ${
                 isActive
                   ? 'text-blue-500 border-b border-blue-500'
                   : 'text-gray-900 hover:text-blue-500'
@@ -66,7 +66,7 @@ const Navbar = () => {
           <NavLink
             to="/shop"
             className={({ isActive }) =>
-              `text-sm font-medium uppercase transition duration-300 ${
+              `font-medium uppercase transition duration-300 ${
                 isActive
                   ? 'text-blue-500 border-b border-blue-500'
                   : 'text-gray-900 hover:text-blue-500'
@@ -79,7 +79,7 @@ const Navbar = () => {
           <NavLink
             to="/products"
             className={({ isActive }) =>
-              `text-sm font-medium uppercase transition duration-300 ${
+              `font-medium uppercase transition duration-300 ${
                 isActive
                   ? 'text-blue-500 border-b border-blue-500'
                   : 'text-gray-900 hover:text-blue-500'
@@ -92,7 +92,7 @@ const Navbar = () => {
           <NavLink
             to="/contact-us"
             className={({ isActive }) =>
-              `text-sm font-medium uppercase transition duration-300 ${
+              `font-medium uppercase transition duration-300 ${
                 isActive
                   ? 'text-blue-500 border-b border-blue-500'
                   : 'text-gray-900 hover:text-blue-500'
@@ -106,12 +106,12 @@ const Navbar = () => {
         {/* Right: Buttons */}
         <div className="flex items-center space-x-4">
           <Link to="/profile">
-            <HiOutlineUserCircle className="h-5 w-5 hover:text-blue-500 transition duration-300" />
+            <HiOutlineUserCircle className="h-6 w-6 hover:text-blue-500 transition duration-300" />
           </Link>
 
           {/* Cart Button */}
           <button onClick={toggleCartDrawer} className="relative group">
-            <LiaShoppingBagSolid className="h-5 w-5 group-hover:text-blue-500 transition duration-300" />
+            <LiaShoppingBagSolid className="h-6 w-6 group-hover:text-blue-500 transition duration-300" />
             <span className="absolute -top-2 -right-2 bg-black text-white rounded-full w-5 h-5 flex items-center justify-center group-hover:bg-blue-500 transition duration-300">
               2
             </span>
@@ -124,7 +124,7 @@ const Navbar = () => {
 
           {/* Menu Button */}
           <button onClick={toggleNavDrawer} className="md:hidden block">
-            <RiMenuFoldLine className="w-5 h-5 hover:text-blue-500 transition duration-300" />
+            <RiMenuFoldLine className="w-6 h-6 hover:text-blue-500 transition duration-300" />
           </button>
         </div>
       </nav>
