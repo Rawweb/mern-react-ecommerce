@@ -9,7 +9,7 @@ const ShopCollectionSection = () => {
 
 
   return (
-    <div className="container mx-auto px-2 mt-10">
+    <div className="container mx-auto px-2 mt-16">
       {/* Top Head */}
       <div className="md:flex justify-between items-center">
         <h1 className="text-4xl md:text-5xl lg:text-7xl  font-semibold w-full mb-5 tracking-wide">

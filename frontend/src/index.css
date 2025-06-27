@@ -7,3 +7,31 @@
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+.scrollbar-blue {
+  position: relative;
+}
+
+/* Hide scrollbar initially */
+.scrollbar-blue::-webkit-scrollbar {
+  height: 0px;
+  transition: height 0.3s ease-in-out;
+}
+
+/* Show scrollbar on hover */
+.scrollbar-blue:hover::-webkit-scrollbar {
+  height: 4px;
+}
+
+.scrollbar-blue::-webkit-scrollbar-track {
+  background: transprent;
+}
+
+.scrollbar-blue::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+  border-radius: 10px;
+}
+
+.scrollbar-blue:hover::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+}
