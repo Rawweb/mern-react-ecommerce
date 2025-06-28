@@ -9,7 +9,7 @@ const ProductGrid = ({ products }) => {
       {products.map((product) => (
         <div key={product._id} className="w-full">
           {/* Product Card */}
-          <div className="h-[350px] overflow-hidden flex flex-col relative bg-sec p-6 transition-all group duration-300 rounded-lg">
+          <div className="h-[350px] overflow-hidden flex flex-col relative bg-sec p-6 transition-all group duration-300">
             {/* Badge and Heart */}
             <div className="flex justify-between items-center">
               <h3

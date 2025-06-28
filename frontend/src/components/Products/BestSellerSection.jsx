@@ -81,7 +81,7 @@ const BestSellerSection = () => {
   return (
     <section className="container mx-auto p-6 mt-10">
       <div>
-        <h3 className="text-3xl md:text-4xl font-semibold"> Best Seller</h3>
+        <h3 className="text-3xl md:text-4xl font-semibold mb-6"> Best Seller</h3>
       </div>
       <ProductGrid products={placeholderProducts} />
     </section>
