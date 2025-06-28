@@ -8,10 +8,8 @@ import pImage4 from "../../assets/p-image4.png";
 import pImage5 from "../../assets/p-image5.png";
 import pImage6 from "../../assets/p-image6.png";
 import pImage7 from "../../assets/p-image7.png";
-import pImage8 from "../../assets/p-image8.png";
-import pImage9 from "../../assets/p-image9.png";
 
-const BestSeller = () => {
+const BestSellerSection = () => {
   const placeholderProducts = [
     {
       _id: "1",
@@ -78,28 +76,10 @@ const BestSeller = () => {
       image: pImage7,
       rating: 3.5,
     },
-
-    {
-      _id: "9",
-      name: "Towel Pack",
-      new: false,
-      price: 52.99,
-      image: pImage8,
-      rating: 3.5,
-    },
-
-    {
-      _id: "10",
-      name: "Towel Pack",
-      new: false,
-      price: 52.99,
-      image: pImage9,
-      rating: 3.5,
-    },
   ];
 
   return (
-    <section className="container mx-auto p-6 mt-16">
+    <section className="container mx-auto p-6 mt-10">
       <div>
         <h3 className="text-3xl md:text-4xl font-semibold"> Best Seller</h3>
       </div>
@@ -108,4 +88,4 @@ const BestSeller = () => {
   );
 };
 
-export default BestSeller;
+export default BestSellerSection;

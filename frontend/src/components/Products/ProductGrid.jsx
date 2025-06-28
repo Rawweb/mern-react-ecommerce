@@ -5,11 +5,11 @@ import renderStars from "../Layout/RenderStars";
 
 const ProductGrid = ({ products }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {products.map((product) => (
         <div key={product._id} className="w-full">
           {/* Product Card */}
-          <div className="h-auto overflow-hidden flex flex-col relative bg-sec p-6 transition-all group duration-300 rounded-lg">
+          <div className="h-[350px] overflow-hidden flex flex-col relative bg-sec p-6 transition-all group duration-300 rounded-lg">
             {/* Badge and Heart */}
             <div className="flex justify-between items-center">
               <h3
@@ -25,12 +25,14 @@ const ProductGrid = ({ products }) => {
             </div>
 
             {/* Product Image */}
-            <Link to={`/product/${product._id}`}>
-              <img
-                src={product.image}
-                alt={product.name}
-                className="py-8 object-cover w-full h-72 transition-transform duration-500 group-hover:scale-110 rounded-lg"
-              />
+            <Link to={`/product/${product._id}`} className="flex-grow">
+              <div className="w-full h-full flex items-center justify-center">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="p-6 object-contain size-72 transition-transform duration-500 group-hover:scale-110 rounded-lg"
+                />
+              </div>
             </Link>
 
             {/* Add to Cart */}
@@ -46,8 +48,10 @@ const ProductGrid = ({ products }) => {
             <div className="flex items-center">
               {renderStars(product.rating)}
             </div>
-            <h4 className="font-semibold text-lg">{product.name}</h4>
-            <p className="text-gray-500 font-medium">$ {product.price}</p>
+            <Link to={`/product/${product._id}`}>
+              <h4 className="font-semibold text-lg">{product.name}</h4>
+              <p className="text-gray-500 font-medium">$ {product.price}</p>
+            </Link>
           </div>
         </div>
       ))}
