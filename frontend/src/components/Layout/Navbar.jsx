@@ -42,7 +42,7 @@ const Navbar = () => {
 
   return (
     <div className=" shadow-sm">
-      <nav className="container mx-auto flex justify-between items-center px-2 py-4">
+      <nav className="container mx-auto flex justify-between items-center p-6 py-4">
         {/* Left: Logo */}
         <div className="text-xl font-bold">
           <Link to="/">3legant.</Link>

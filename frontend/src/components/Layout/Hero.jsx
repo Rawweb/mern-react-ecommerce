@@ -28,7 +28,7 @@ const Hero = () => {
   }, [currentIndex]);
 
   return (
-    <div className="container mx-auto h-[400px] md:h-[600px] lg:h-[750px] px-2 relative group">
+    <section className="container mx-auto h-[400px] md:h-[600px] lg:h-[750px] p-6 relative group">
       <div className="relative w-full h-full">
         <div
           style={{ backgroundImage: `url(${slides[currentIndex]})` }}
@@ -67,7 +67,7 @@ const Hero = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

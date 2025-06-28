@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { MdOutlineArrowRight, MdOutlineArrowLeft } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
-import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
+import renderStars from "../Layout/RenderStars";
 import { Link } from "react-router-dom";
 import pImage from "../../assets/p-image.png";
 import pImage1 from "../../assets/p-image1.png";
@@ -83,7 +83,7 @@ const NewArrivalsSection = () => {
       new: false,
       price: 52.99,
       image: pImage7,
-      rating: 3.5,
+      rating: 3.7,
     },
   ];
 
@@ -135,36 +135,15 @@ const NewArrivalsSection = () => {
     }
   }, []);
 
-  const renderStars = (rating) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<IoMdStar key={`full-${i}`} className="size-5 text-black" />);
-    }
-
-    if (hasHalfStar) {
-      stars.push(<IoMdStarHalf key="half" className="size-5 text-black" />);
-    }
-
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(
-        <IoMdStarOutline key={`empty-${i}`} className="size-5 text-black" />
-      );
-    }
-
-    return stars;
-  };
 
   return (
-    <div className="container mx-auto px-2 mt-16 mb-24 relative">
+    <section className="container mx-auto p-6 mt-16 relative">
       {/* Top Head */}
       <div className="flex justify-between items-center">
         <div className="text-3xl md:text-4xl font-semibold">
           <h1>
-            New <br /> Arrival
+            New Arrival
           </h1>
         </div>
         {/* Scroll Buttons */}
@@ -253,7 +232,7 @@ const NewArrivalsSection = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -9,10 +9,10 @@ const ShopCollectionSection = () => {
 
 
   return (
-    <div className="container mx-auto px-2 mt-16">
+    <section className="container mx-auto p-6 mt-16">
       {/* Top Head */}
       <div className="md:flex justify-between items-center">
-        <h1 className="text-4xl md:text-5xl lg:text-7xl  font-semibold w-full mb-5 tracking-wide">
+        <h1 className="text-3xl md:text-4xl lg:text-6xl  font-semibold w-full mb-5 tracking-wide">
           Simply Unique <span className="text-gray-500">/</span> <br />
           Simply Better <span className="text-gray-500">.</span>
         </h1>
@@ -26,7 +26,7 @@ const ShopCollectionSection = () => {
       </div>
 
       {/* Low Head */}
-      <div className="grid grid-cols-1 gap-4 mt-10 md:grid-cols-4 md:grid-rows-2">
+      <div className="grid grid-cols-1 gap-6 mt-10 md:grid-cols-4 md:grid-rows-2">
         {/* Living Room */}
         <div className="md:col-span-2 md:row-span-2 relative">
           <div className="absolute lg:left-14 lg:top-20 md:left-10 md:top-10 lg:space-y-2 left-14 top-16 md:space-y-0">
@@ -90,7 +90,7 @@ const ShopCollectionSection = () => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
