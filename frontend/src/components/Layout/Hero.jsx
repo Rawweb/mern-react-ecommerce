@@ -38,7 +38,7 @@ const Hero = () => {
 
           {/* Left Arrow */}
           <div
-            className="hidden group-hover:block absolute top-[45%] left-10 text-2xl rounded-full p-2 bg-slate-200 text-gray-700 cursor-pointer"
+            className="hidden group-hover:block absolute top-[45%] md:left-10 left-2 text-2xl rounded-full p-2 bg-slate-200 text-gray-700 cursor-pointer"
             onClick={prevSlide}
           >
             <BsArrowLeftShort className="w-8 h-8" />
@@ -46,7 +46,7 @@ const Hero = () => {
 
           {/* Right Arrow */}
           <div
-            className="hidden group-hover:block absolute top-[45%] right-10 text-2xl rounded-full p-2 bg-slate-200 text-gray-700 cursor-pointer"
+            className="hidden group-hover:block absolute top-[45%] md:right-10 right-2 text-2xl rounded-full p-2 bg-slate-200 text-gray-700 cursor-pointer"
             onClick={nextSlide}
           >
             <BsArrowRightShort className="w-8 h-8" />

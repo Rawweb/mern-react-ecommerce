@@ -7,8 +7,7 @@ import { MdClose } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
 import { SiInstagram, SiFacebook, SiGoogle } from 'react-icons/si';
 import SearchBar from './SearchBar';
-import { LuSearch } from 'react-icons/lu';
-import CartDrawer from './CartDrawer';
+import CartDrawer from '../Layout/CartDrawer';
 
 const Navbar = () => {
   const [cartDrawerOpen, setcartDrawerOpen] = useState(false);
@@ -25,7 +24,7 @@ const Navbar = () => {
   const drawerRef = useRef();
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = event => {
       if (
         isNavDrawerOpen &&
         drawerRef.current &&

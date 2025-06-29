@@ -65,7 +65,7 @@ const BestSellerSection = () => {
       new: false,
       price: 98.99,
       image: pImage6,
-      rating: 2,
+      rating: 5,
     },
 
     {

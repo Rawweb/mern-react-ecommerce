@@ -1,12 +1,12 @@
-import React from "react";
-import { FaRegHeart } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import renderStars from "../Layout/RenderStars";
+import React from 'react';
+import { FaRegHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import renderStars from './RenderStars';
 
 const ProductGrid = ({ products }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {products.map((product) => (
+      {products.map(product => (
         <div key={product._id} className="w-full">
           {/* Product Card */}
           <div className="h-[350px] overflow-hidden flex flex-col relative bg-sec p-6 transition-all group duration-300">
@@ -14,10 +14,10 @@ const ProductGrid = ({ products }) => {
             <div className="flex justify-between items-center">
               <h3
                 className={`py-1 px-2 rounded-md text-sm absolute top-4 left-4 ${
-                  product.new ? "bg-blue-500 text-white shadow-md" : ""
+                  product.new ? 'bg-blue-500 text-white shadow-md' : ''
                 }`}
               >
-                {product.new && "New"}
+                {product.new && 'New'}
               </h3>
               <button className="absolute top-4 -right-10 group-hover:right-4 group-hover:opacity-100 transition-all duration-300 z-10 bg-white p-2 rounded-full shadow-md">
                 <FaRegHeart className="size-5" />

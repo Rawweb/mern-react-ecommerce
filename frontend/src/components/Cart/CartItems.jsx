@@ -52,9 +52,9 @@ const CartItems = () => {
   <div className="flex flex-col justify-between gap-8">
     <div>
       {cartProducts.map((product) => (
-        <div key={product.productId} className="border-b">
-          <div className="flex justify-between mb-2">
-            <div className="flex items-start gap-4 p-2">
+        <div key={product.productId} className="border-b p-4">
+          <div className="flex justify-between items-start mb-2">
+            <div className="flex items-start gap-4 text-sm md:text-lg">
               <img
                 src={product.image}
                 alt={product.name}
@@ -82,7 +82,7 @@ const CartItems = () => {
             </div>
 
             {/* Price and Delete */}
-            <div className="flex flex-col items-end gap-2">
+            <div className="flex flex-col items-end gap-2 text-sm md:text-lg">
               <h3 className="font-semibold">
                 ${Number(product.price * product.quantity).toFixed(2)}
               </h3>
@@ -99,7 +99,7 @@ const CartItems = () => {
     </div>
 
     {/* Totals */}
-    <div className="p-4 border-b mt-10">
+    <div className=" border-b mt-10 p-4">
       <div className="flex justify-between mb-2">
         <p className="text-gray-700 font-medium">Subtotal</p>
         <h3 className="font-semibold text-gray-700">
