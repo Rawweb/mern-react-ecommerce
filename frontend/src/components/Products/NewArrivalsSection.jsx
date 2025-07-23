@@ -3,14 +3,7 @@ import { MdOutlineArrowRight, MdOutlineArrowLeft } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
 import renderStars from './RenderStars';
 import { Link } from 'react-router-dom';
-// import pImage from '../../assets/p-image.png';
-// import pImage1 from '../../assets/p-image1.png';
-// import pImage2 from '../../assets/p-image2.png';
-// import pImage3 from '../../assets/p-image3.png';
-// import pImage4 from '../../assets/p-image4.png';
-// import pImage5 from '../../assets/p-image5.png';
-// import pImage6 from '../../assets/p-image6.png';
-// import pImage7 from '../../assets/p-image7.png';
+
 
 const NewArrivalsSection = () => {
   const scrollRef = useRef(null);
