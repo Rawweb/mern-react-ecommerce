@@ -16,7 +16,12 @@ const BestSellerSection = () => {
       name: "ShelfStand",
       new: true,
       price: 55.99,
-      image: pImage,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=9',
+          altText: 'Towel Pack Image',
+        },
+      ],
       rating: 4.5,
     },
     {
@@ -24,7 +29,12 @@ const BestSellerSection = () => {
       name: "Cloth Stand",
       new: false,
       price: 224.99,
-      image: pImage1,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=10',
+          altText: 'Towel Pack Image',
+        },
+      ],
       rating: 3,
     },
     {
@@ -32,7 +42,12 @@ const BestSellerSection = () => {
       name: "Bamboo Basket",
       new: false,
       price: 24.99,
-      image: pImage2,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=11',
+          altText: 'Towel Pack Image',
+        },
+      ],
       rating: 4,
     },
     {
@@ -40,7 +55,12 @@ const BestSellerSection = () => {
       name: "Console PS4 + Pad",
       new: true,
       price: 512.99,
-      image: pImage3,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=12',
+          altText: 'Towel Pack Image',
+        },
+      ],
       rating: 5,
     },
     {
@@ -48,7 +68,12 @@ const BestSellerSection = () => {
       name: "Wireless Headphone",
       new: false,
       price: 65.99,
-      image: pImage4,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=13',
+          altText: 'Towel Pack Image',
+        },
+      ],
       rating: 4.5,
     },
     {
@@ -56,7 +81,12 @@ const BestSellerSection = () => {
       name: "Living Room Chair",
       new: false,
       price: 120.99,
-      image: pImage5,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=14',
+          altText: 'Towel Pack Image',
+        },
+      ],
       rating: 3.5,
     },
     {
@@ -64,16 +94,26 @@ const BestSellerSection = () => {
       name: "Beiege Table Lamp",
       new: false,
       price: 98.99,
-      image: pImage6,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=15',
+          altText: 'Towel Pack Image',
+        },
+      ],
       rating: 5,
     },
 
     {
-      _id: "9",
+      _id: "8",
       name: "Towel Pack",
       new: false,
       price: 52.99,
-      image: pImage7,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=16',
+          altText: 'Towel Pack Image',
+        },
+      ],
       rating: 3.5,
     },
   ];

@@ -3,14 +3,14 @@ import { MdOutlineArrowRight, MdOutlineArrowLeft } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
 import renderStars from './RenderStars';
 import { Link } from 'react-router-dom';
-import pImage from '../../assets/p-image.png';
-import pImage1 from '../../assets/p-image1.png';
-import pImage2 from '../../assets/p-image2.png';
-import pImage3 from '../../assets/p-image3.png';
-import pImage4 from '../../assets/p-image4.png';
-import pImage5 from '../../assets/p-image5.png';
-import pImage6 from '../../assets/p-image6.png';
-import pImage7 from '../../assets/p-image7.png';
+// import pImage from '../../assets/p-image.png';
+// import pImage1 from '../../assets/p-image1.png';
+// import pImage2 from '../../assets/p-image2.png';
+// import pImage3 from '../../assets/p-image3.png';
+// import pImage4 from '../../assets/p-image4.png';
+// import pImage5 from '../../assets/p-image5.png';
+// import pImage6 from '../../assets/p-image6.png';
+// import pImage7 from '../../assets/p-image7.png';
 
 const NewArrivalsSection = () => {
   const scrollRef = useRef(null);
@@ -26,7 +26,12 @@ const NewArrivalsSection = () => {
       name: 'ShelfStand',
       new: true,
       price: 55.99,
-      image: pImage,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=1',
+          altText: 'ShelfStand Image',
+        },
+      ],
       rating: 4.5,
     },
     {
@@ -34,7 +39,12 @@ const NewArrivalsSection = () => {
       name: 'Cloth Stand',
       new: false,
       price: 224.99,
-      image: pImage1,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=2',
+          altText: 'Cloth Stand Image',
+        },
+      ],
       rating: 3,
     },
     {
@@ -42,7 +52,12 @@ const NewArrivalsSection = () => {
       name: 'Bamboo Basket',
       new: false,
       price: 24.99,
-      image: pImage2,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=3',
+          altText: 'Stylish Jacket Image',
+        },
+      ],
       rating: 4,
     },
     {
@@ -50,7 +65,12 @@ const NewArrivalsSection = () => {
       name: 'Console PS4 + Pad',
       new: true,
       price: 512.99,
-      image: pImage3,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=4',
+          altText: 'Bamboo Basket Image',
+        },
+      ],
       rating: 5,
     },
     {
@@ -58,7 +78,12 @@ const NewArrivalsSection = () => {
       name: 'Wireless Headphone',
       new: false,
       price: 65.99,
-      image: pImage4,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=5',
+          altText: 'Wireless Headphone Image',
+        },
+      ],
       rating: 4.5,
     },
     {
@@ -66,7 +91,12 @@ const NewArrivalsSection = () => {
       name: 'Living Room Chair',
       new: false,
       price: 120.99,
-      image: pImage5,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=6',
+          altText: 'Living Room Chai Image',
+        },
+      ],
       rating: 3.5,
     },
     {
@@ -74,7 +104,12 @@ const NewArrivalsSection = () => {
       name: 'Beiege Table Lamp',
       new: false,
       price: 98.99,
-      image: pImage6,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=7',
+          altText: 'Beiege Table Lamp Image',
+        },
+      ],
       rating: 2,
     },
     {
@@ -82,7 +117,12 @@ const NewArrivalsSection = () => {
       name: 'Towel Pack',
       new: false,
       price: 52.99,
-      image: pImage7,
+      image: [
+        {
+          url: 'https://picsum.photos/200/300/?random=8',
+          altText: 'Towel Pack Image',
+        },
+      ],
       rating: 3.7,
     },
   ];
@@ -202,8 +242,8 @@ const NewArrivalsSection = () => {
                 <Link to={`/product/${product._id}`} className="flex-grow">
                   <div className="w-full h-full flex items-center justify-center">
                     <img
-                      src={product.image}
-                      alt={product.name}
+                      src={product.image[0]?.url}
+                      alt={product.image[0]?.url}
                       draggable={false}
                       className="py-8 object-contain size-72 transition-transform duration-500 group-hover:scale-110 rounded-lg"
                     />

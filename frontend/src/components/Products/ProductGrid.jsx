@@ -28,8 +28,8 @@ const ProductGrid = ({ products }) => {
             <Link to={`/product/${product._id}`} className="flex-grow">
               <div className="w-full h-full flex items-center justify-center">
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={product.image?.[0]?.url}
+                  alt={product.image?.[0]?.altText || product.name}
                   className="p-6 object-contain size-72 transition-transform duration-500 group-hover:scale-110 rounded-lg"
                 />
               </div>
