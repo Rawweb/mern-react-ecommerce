@@ -93,7 +93,7 @@ const ProductAccordion = () => {
 
       {/* Reviews */}
       <AccordionSection
-        title="Reviews (11)"
+        title="Reviews"
         isOpen={openSection === 'reviews'}
         onClick={() => toggleSection('reviews')}
       >

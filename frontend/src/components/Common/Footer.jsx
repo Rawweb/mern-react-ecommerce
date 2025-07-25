@@ -64,7 +64,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center border-b  border-gray-500 py-6 mt-10">
             {/* Logo */}
             <div className="flex flex-col md:flex-row items-center gap-6">
-              <Link className="text-xl font-semibold text-white border-b border-gray-500 pb-6 md:border-b-0 md:pb-0">3legant.</Link>
+              <Link to={"/"} className="text-xl font-semibold text-white border-b border-gray-500 pb-6 md:border-b-0 md:pb-0">3legant.</Link>
               <p className="text-gray-500 md:border-l border-gray-500 md:pl-4">
                 Gift & Decorations Store
               </p>
@@ -72,10 +72,10 @@ const Footer = () => {
 
             {/* Links */}
             <div className="flex flex-col md:flex-row items-center gap-4 mt-10 md:mt-0">
-              <Link className="hover:text-gray-200 transition duration-300">
+              <Link to={"/"} className="hover:text-gray-200 transition duration-300">
                 Home
               </Link>
-              <Link className="hover:text-gray-200 transition duration-300">
+              <Link to={"/shop"} className="hover:text-gray-200 transition duration-300">
                 Shop
               </Link>
               <Link className="hover:text-gray-200 transition duration-300">

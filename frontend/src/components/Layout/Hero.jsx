@@ -28,7 +28,7 @@ const Hero = () => {
   }, [currentIndex]);
 
   return (
-    <section className="">
+    <section>
       <div className="container mx-auto h-[400px] md:h-[600px] lg:h-[750px] p-6 pt-0 relative group">
         <div className="relative w-full h-full">
           <div

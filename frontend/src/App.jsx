@@ -5,19 +5,23 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import ProductDetails from './components/Products/ProductDetails';
+import Shop from './pages/Shop';
 
 const App = () => {
   return (
     <BrowserRouter>
-    <Toaster position="top-right" />
+      <Toaster position="top-right" />
       <Routes>
         {/* User Layout */}
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
         <Route path="/" element={<UserLayout />}>
           <Route index element={<Home />} />
           <Route path="product/:id" element={<ProductDetails />} />
+          <Route path="shop" element={<Shop />} />
+          <Route path="home" element={<Home />} />
+          {/* Add other user routes here */}
         </Route>
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
 
         {/* Admin Layout */}
       </Routes>
