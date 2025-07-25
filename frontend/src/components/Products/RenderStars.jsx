@@ -1,8 +1,7 @@
-// src/utils/renderStars.js
-import React from "react";
-import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
+import React from 'react';
+import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from 'react-icons/io';
 
-const renderStars = (rating) => {
+const renderStars = rating => {
   const stars = [];
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;

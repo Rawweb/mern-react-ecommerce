@@ -2,6 +2,8 @@ import React from 'react';
 import { FaRegHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import renderStars from './RenderStars';
+import WishlistButton from '../Common/WishlistButton';
+import AddToCartButton from '../Common/AddToCartButton';
 
 const ProductGrid = ({ products }) => {
   return (
@@ -19,9 +21,7 @@ const ProductGrid = ({ products }) => {
               >
                 {product.new && 'New'}
               </h3>
-              <button className="absolute top-4 -right-10 group-hover:right-4 group-hover:opacity-100 transition-all duration-300 z-10 bg-white p-2 rounded-full shadow-md">
-                <FaRegHeart className="size-5" />
-              </button>
+              <WishlistButton productId={product._id} />
             </div>
 
             {/* Product Image */}
@@ -37,9 +37,7 @@ const ProductGrid = ({ products }) => {
 
             {/* Add to Cart */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-8 opacity-0 group-hover:translate-y-1 group-hover:opacity-100 transition-all duration-500 z-10 w-full px-6">
-              <button className="bg-black text-white py-2 px-4 rounded-lg w-full font-medium tracking-wide hover:bg-blue-500 transition duration-300">
-                <p>Add to cart</p>
-              </button>
+              <AddToCartButton product={product} />
             </div>
           </div>
 

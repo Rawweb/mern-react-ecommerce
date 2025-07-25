@@ -4,6 +4,7 @@ import UserLayout from './components/Layout/UserLayout';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import ProductDetails from './components/Products/ProductDetails';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         {/* User Layout */}
         <Route path="/" element={<UserLayout />}>
           <Route index element={<Home />} />
+          <Route path="product/:id" element={<ProductDetails />} />
         </Route>
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />

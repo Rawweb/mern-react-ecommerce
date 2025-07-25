@@ -10,10 +10,10 @@ const Topbar = () => {
         <LuTicketPercent className='h-4 w-4 md:h-6 md:w-6'  />
         <p className='text-sm md:text-lg tracking-tight md:tracking-normal'>30% off storewide — Limited time!</p>
         <div className='border-b border-blue-500 hover:border-blue-700'>
-          <a href="#" className='flex items-center gap-2 text-blue-500 hover:text-blue-700 text-sm md:text-lg '>
+          <Link to={'/register'} className='flex items-center gap-2 text-blue-500 hover:text-blue-700 text-sm md:text-lg '>
             Shop Now
             <BsArrowRight className='h-4 w-4 md:h-6 md:w-6 ' />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
