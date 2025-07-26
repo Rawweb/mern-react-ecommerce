@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'sonner';
 
-const AddToCartButton = ({ product }) => {
+const AddToCartButton = ({ product, className = '' }) => {
   const [isAdding, setIsAdding] = useState(false);
 
   const handleAddToCart = () => {
@@ -20,7 +20,7 @@ const AddToCartButton = ({ product }) => {
       disabled={isAdding}
       className={`bg-black text-white py-2 px-4 rounded-lg w-full font-medium tracking-wide transition duration-300 ${
         isAdding ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-500'
-      }`}
+      } ${className}`}
     >
       {isAdding ? 'Adding...' : 'Add to cart'}
     </button>

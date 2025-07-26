@@ -4,6 +4,9 @@ const mockProducts = [
     name: 'Modern Sofa',
     new: true,
     price: 89.99,
+    originalPrice: 108.5,
+    description:
+      'Modern Sofa - Perfect for adding style and comfort to your living area.',
     category: 'Living Room',
     sizes: ['S', 'M', 'L'],
     image: [
@@ -19,6 +22,9 @@ const mockProducts = [
     name: 'LED Mirror',
     new: false,
     price: 120.5,
+    originalPrice: 141.65,
+    description:
+      'LED Mirror - Functional and elegant addition to your bathroom space.',
     category: 'Bathroom',
     sizes: ['M', 'L'],
     image: [
@@ -34,6 +40,9 @@ const mockProducts = [
     name: 'Wooden Desk',
     new: true,
     price: 310.0,
+    originalPrice: 372.0,
+    description:
+      'Wooden Desk - Designed for a productive and modern workspace.',
     category: 'Office',
     sizes: ['L', 'XL'],
     image: [
@@ -49,6 +58,9 @@ const mockProducts = [
     name: 'Dining Table',
     new: false,
     price: 450.99,
+    originalPrice: 528.45,
+    description:
+      'Dining Table - Great for dining and entertaining guests in style.',
     category: 'Dining',
     sizes: ['M', 'L', 'XL'],
     image: [
@@ -64,6 +76,9 @@ const mockProducts = [
     name: 'Floor Lamp',
     new: false,
     price: 75.49,
+    originalPrice: 90.59,
+    description:
+      'Floor Lamp - Enhances your bedroom with cozy and functional design.',
     category: 'Bedroom',
     sizes: ['XS', 'S'],
     image: [
@@ -79,6 +94,8 @@ const mockProducts = [
     name: 'Outdoor Bench',
     new: true,
     price: 149.99,
+    originalPrice: 179.99,
+    description: 'Outdoor Bench - Ideal for outdoor lounging and decor.',
     category: 'Outdoor',
     sizes: ['M', 'L', 'XL'],
     image: [
@@ -94,6 +111,8 @@ const mockProducts = [
     name: 'Bookshelf',
     new: false,
     price: 210.0,
+    originalPrice: 247.2,
+    description: 'Bookshelf - Designed for a productive and modern workspace.',
     category: 'Office',
     sizes: ['S', 'M'],
     image: [
@@ -109,6 +128,9 @@ const mockProducts = [
     name: 'Wardrobe',
     new: false,
     price: 560.0,
+    originalPrice: 665.6,
+    description:
+      'Wardrobe - Enhances your bedroom with cozy and functional design.',
     category: 'Bedroom',
     sizes: ['XL', 'XXL'],
     image: [
@@ -124,6 +146,9 @@ const mockProducts = [
     name: 'Kitchen Island',
     new: true,
     price: 299.99,
+    originalPrice: 359.99,
+    description:
+      'Kitchen Island - Essential for efficient and stylish kitchen space.',
     category: 'Kitchen',
     sizes: ['L', 'XL'],
     image: [
@@ -139,6 +164,9 @@ const mockProducts = [
     name: 'Coffee Table',
     new: false,
     price: 85.0,
+    originalPrice: 102.0,
+    description:
+      'Coffee Table - Perfect for adding style and comfort to your living area.',
     category: 'Living Room',
     sizes: ['S', 'M'],
     image: [
@@ -154,6 +182,9 @@ const mockProducts = [
     name: 'Nightstand',
     new: true,
     price: 52.5,
+    originalPrice: 63.0,
+    description:
+      'Nightstand - Enhances your bedroom with cozy and functional design.',
     category: 'Bedroom',
     sizes: ['XS', 'S'],
     image: [
@@ -169,6 +200,9 @@ const mockProducts = [
     name: 'Kitchen Stool',
     new: false,
     price: 58.0,
+    originalPrice: 69.6,
+    description:
+      'Kitchen Stool - Essential for efficient and stylish kitchen space.',
     category: 'Kitchen',
     sizes: ['S', 'M'],
     image: [
@@ -184,6 +218,8 @@ const mockProducts = [
     name: 'Patio Table',
     new: true,
     price: 130.0,
+    originalPrice: 156.0,
+    description: 'Patio Table - Ideal for outdoor lounging and decor.',
     category: 'Outdoor',
     sizes: ['M', 'L'],
     image: [
@@ -199,6 +235,9 @@ const mockProducts = [
     name: 'Office Chair',
     new: false,
     price: 180.5,
+    originalPrice: 216.6,
+    description:
+      'Office Chair - Designed for a productive and modern workspace.',
     category: 'Office',
     sizes: ['M', 'L', 'XL'],
     image: [
@@ -214,6 +253,9 @@ const mockProducts = [
     name: 'Wall Shelf',
     new: true,
     price: 65.0,
+    originalPrice: 78.0,
+    description:
+      'Wall Shelf - Perfect for adding style and comfort to your living area.',
     category: 'Living Room',
     sizes: ['S', 'M'],
     image: [
@@ -229,6 +271,9 @@ const mockProducts = [
     name: 'Bathtub Tray',
     new: false,
     price: 90.0,
+    originalPrice: 108.0,
+    description:
+      'Bathtub Tray - Functional and elegant addition to your bathroom space.',
     category: 'Bathroom',
     sizes: ['S', 'M', 'L'],
     image: [
@@ -244,6 +289,9 @@ const mockProducts = [
     name: 'Table Runner',
     new: true,
     price: 62.5,
+    originalPrice: 75.0,
+    description:
+      'Table Runner - Great for dining and entertaining guests in style.',
     category: 'Dining',
     sizes: ['XS', 'S'],
     image: [
@@ -259,6 +307,8 @@ const mockProducts = [
     name: 'Desk Lamp',
     new: false,
     price: 70.0,
+    originalPrice: 84.0,
+    description: 'Desk Lamp - Designed for a productive and modern workspace.',
     category: 'Office',
     sizes: ['XS', 'S', 'M'],
     image: [
@@ -274,6 +324,9 @@ const mockProducts = [
     name: 'Corner Shelf',
     new: true,
     price: 110.0,
+    originalPrice: 132.0,
+    description:
+      'Corner Shelf - Perfect for adding style and comfort to your living area.',
     category: 'Living Room',
     sizes: ['S', 'M'],
     image: [
@@ -289,6 +342,9 @@ const mockProducts = [
     name: 'Bamboo Mat',
     new: false,
     price: 72.0,
+    originalPrice: 86.4,
+    description:
+      'Bamboo Mat - Functional and elegant addition to your bathroom space.',
     category: 'Bathroom',
     sizes: ['XS', 'S', 'M'],
     image: [
@@ -304,6 +360,9 @@ const mockProducts = [
     name: 'Dining Set',
     new: true,
     price: 420.0,
+    originalPrice: 504.0,
+    description:
+      'Dining Set - Great for dining and entertaining guests in style.',
     category: 'Dining',
     sizes: ['M', 'L', 'XL'],
     image: [
@@ -319,6 +378,8 @@ const mockProducts = [
     name: 'Garden Chair',
     new: false,
     price: 135.0,
+    originalPrice: 162.0,
+    description: 'Garden Chair - Ideal for outdoor lounging and decor.',
     category: 'Outdoor',
     sizes: ['M', 'L'],
     image: [
@@ -334,6 +395,9 @@ const mockProducts = [
     name: 'Desk Cabinet',
     new: true,
     price: 235.0,
+    originalPrice: 282.0,
+    description:
+      'Desk Cabinet - Designed for a productive and modern workspace.',
     category: 'Office',
     sizes: ['M', 'L', 'XL'],
     image: [
@@ -349,6 +413,9 @@ const mockProducts = [
     name: 'Shoe Rack',
     new: false,
     price: 90.0,
+    originalPrice: 108.0,
+    description:
+      'Shoe Rack - Functional and elegant addition to your bathroom space.',
     category: 'Bathroom',
     sizes: ['S', 'M'],
     image: [
