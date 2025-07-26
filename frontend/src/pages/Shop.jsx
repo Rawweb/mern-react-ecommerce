@@ -4,135 +4,22 @@ import shopHero from '../assets/shop-hero.jpg';
 import FilterSidebar from '../components/Products/FilterSidebar';
 import ProductGrid from '../components/Products/ProductGrid';
 import ShopTopBar from '../components/Products/ShopTopBar';
-
-
+import mockProducts from '../data/mockProduct';
+import { FaAlignRight } from 'react-icons/fa6';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Shop = () => {
   const [sortBy, setSortBy] = useState('default');
   const [viewMode, setViewMode] = useState('grid');
   const [activeFilters, setActiveFilters] = useState({});
   const [products, setProducts] = useState([]);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   useEffect(() => {
-  const mockData = [
-    {
-      _id: "1",
-      name: "ShelfStand",
-      new: true,
-      price: 55.99,
-      category:'Living Room',
-      image: [
-        {
-          url: 'https://picsum.photos/200/300/?random=9',
-          altText: 'Towel Pack Image',
-        },
-      ],
-      rating: 4.5,
-    },
-    {
-      _id: "2",
-      name: "Cloth Stand",
-      new: false,
-      price: 224.99,
-      category:'Living Room',
-      image: [
-        {
-          url: 'https://picsum.photos/200/300/?random=10',
-          altText: 'Towel Pack Image',
-        },
-      ],
-      rating: 3,
-    },
-    {
-      _id: "3",
-      name: "Bamboo Basket",
-      new: false,
-      price: 24.99,
-      category:'Living Room',
-      image: [
-        {
-          url: 'https://picsum.photos/200/300/?random=11',
-          altText: 'Towel Pack Image',
-        },
-      ],
-      rating: 4,
-    },
-    {
-      _id: "4",
-      name: "Console PS4 + Pad",
-      new: true,
-      price: 512.99,
-      category:'Dining',
-      image: [
-        {
-          url: 'https://picsum.photos/200/300/?random=12',
-          altText: 'Towel Pack Image',
-        },
-      ],
-      rating: 5,
-    },
-    {
-      _id: "5",
-      name: "Wireless Headphone",
-      new: false,
-      price: 65.99,
-      category:'Bedroom',
-      image: [
-        {
-          url: 'https://picsum.photos/200/300/?random=13',
-          altText: 'Towel Pack Image',
-        },
-      ],
-      rating: 4.5,
-    },
-    {
-      _id: "6",
-      name: "Living Room Chair",
-      new: false,
-      price: 120.99,
-      category:'Bedroom',
-      image: [
-        {
-          url: 'https://picsum.photos/200/300/?random=14',
-          altText: 'Towel Pack Image',
-        },
-      ],
-      rating: 3.5,
-    },
-    {
-      _id: "7",
-      name: "Beiege Table Lamp",
-      new: false,
-      price: 98.99,
-      category:'Kitchen',
-      image: [
-        {
-          url: 'https://picsum.photos/200/300/?random=15',
-          altText: 'Towel Pack Image',
-        },
-      ],
-      rating: 5,
-    },
-
-    {
-      _id: "8",
-      name: "Towel Pack",
-      new: false,
-      price: 52.99,
-      category:'Kitchen',
-      image: [
-        {
-          url: 'https://picsum.photos/200/300/?random=16',
-          altText: 'Towel Pack Image',
-        },
-      ],
-      rating: 3.5,
-    },
-  ];
-
-  setProducts(mockData);
-}, []);
-
+    setProducts(mockProducts);
+  }, []);
 
   const filterProducts = products.filter(product => {
     const matchCategory =
@@ -150,6 +37,32 @@ const Shop = () => {
 
     return matchCategory && matchSize && matchPrice;
   });
+
+  // Sorting
+  const sortedProducts = [...filterProducts].sort((a, b) => {
+    if (sortBy === 'price-asc') return a.price - b.price;
+    if (sortBy === 'price-desc') return b.price - a.price;
+    if (sortBy === 'nameAsc') return a.name.localeCompare(b.name);
+    if (sortBy === 'nameDesc') return b.name.localeCompare(a.name);
+    return 0;
+  });
+
+  // Pagination
+  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
+  const paginatedProducts = sortedProducts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
+  // Reset the current page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilters]);
 
   return (
     <div className="container mx-auto p-6 pt-0 min-h-screen">
@@ -191,6 +104,17 @@ const Shop = () => {
 
         {/* Main Product Area */}
         <div className="flex-1">
+          {/* Mobile Filter Toggle Button */}
+          <div className="lg:hidden flex justify-end mb-4">
+            <button
+              onClick={() => setShowMobileFilters(true)}
+              className="px-2 py-1 border border-gray-300 text-sm inline-flex items-center gap-2 hover:bg-gray-100"
+            >
+              <FaAlignRight className="size-4" />
+              Filter
+            </button>
+          </div>
+
           {/* Top bar: Category + Sort + View Options */}
           <ShopTopBar
             currentCategory={activeFilters.category}
@@ -199,14 +123,126 @@ const Shop = () => {
             viewMode={viewMode}
             setViewMode={setViewMode}
           />
-          {/* ProductGrid */}
-          <ProductGrid products={filterProducts} viewMode={viewMode} />
+          {/* ProductGrid or Empty State */}
+          {paginatedProducts.length > 0 ? (
+            <ProductGrid products={paginatedProducts} viewMode={viewMode} />
+          ) : (
+            <div className="text-center py-20 text-gray-500">
+              <p className="text-lg font-medium">
+                No products match your filters.
+              </p>
+              <p className="text-sm mt-2">
+                Try adjusting your filters or sort options.
+              </p>
+            </div>
+          )}
+
           {/* Load more button */}
-          <div className="text-center mt-8">
-            <button className="border px-6 py-2 rounded">Show more</button>
-          </div>
+          {/* Pagination */}
+          {paginatedProducts.length > 0 && (
+            <div className="flex justify-center mt-8 space-x-2">
+              <button
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="px-3 py-1 border rounded disabled:opacity-50"
+              >
+                Prev
+              </button>
+
+              {[...Array(totalPages)].map((_, index) => {
+                const page = index + 1;
+                const shouldRender =
+                  page === 1 ||
+                  page === totalPages ||
+                  Math.abs(currentPage - page) <= 1;
+
+                const isEllipsis =
+                  (page === currentPage - 2 && page !== 2) ||
+                  (page === currentPage + 2 && page !== totalPages - 1);
+
+                if (isEllipsis) {
+                  return (
+                    <span key={page} className="px-2 text-gray-500">
+                      ...
+                    </span>
+                  );
+                }
+
+                return shouldRender ? (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`px-3 py-1 border rounded ${
+                      currentPage === page ? 'bg-blue-500 text-white' : ''
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ) : null;
+              })}
+
+              <button
+                onClick={() =>
+                  setCurrentPage(prev => Math.min(prev + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+                className="px-3 py-1 border rounded disabled:opacity-50"
+              >
+                Next
+              </button>
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Mobile Filter Drawer */}
+      <AnimatePresence>
+        {showMobileFilters && (
+          <motion.div
+            className="fixed inset-0 z-50 flex lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* Background overlay */}
+            <motion.div
+              className="flex-1 bg-black bg-opacity-50"
+              onClick={() => setShowMobileFilters(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+            />
+
+            {/* Slide-in drawer */}
+            <motion.div
+              initial={{ x: '+100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '+100%' }}
+              transition={{ type: 'tween', duration: 0.3 }}
+              className="w-4/5 max-w-sm bg-white p-4 overflow-y-auto h-full shadow-xl"
+            >
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold">Filters</h3>
+                <button
+                  onClick={() => setShowMobileFilters(false)}
+                  className="text-gray-500 text-xl"
+                >
+                  ×
+                </button>
+              </div>
+
+              <FilterSidebar onFilterChange={setActiveFilters} />
+
+              <button
+                onClick={() => setShowMobileFilters(false)}
+                className="mt-4 w-full bg-blue-600 text-white py-2 rounded text-sm"
+              >
+                Apply Filters
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

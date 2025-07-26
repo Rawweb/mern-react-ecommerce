@@ -159,7 +159,7 @@ const Navbar = () => {
         <div className="mb-20">
           {/* Header */}
           <div className="flex items-center justify-between p-6 text-xl">
-            <Link className="font-semibold">3legant.</Link>
+            <Link  className="font-semibold">3legant.</Link>
             <button onClick={toggleNavDrawer}>
               <MdClose className="h-6 w-6 text-gray-700 hover:text-blue-500 transition duration-300" />
             </button>
@@ -173,7 +173,7 @@ const Navbar = () => {
           {/* Links */}
           <div className="flex flex-col p-6 mt-4 gap-4 text-sm">
             <Link
-              to="#"
+              to="/home"
               onClick={toggleNavDrawer}
               className="border-b pb-5 uppercase hover:text-blue-500 transition duration-300 shadow-sm font-medium
           "
@@ -181,7 +181,7 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              to="#"
+              to="/shop"
               onClick={toggleNavDrawer}
               className="border-b pb-5 uppercase hover:text-blue-500 transition duration-300 shadow-sm font-medium
           "
@@ -189,7 +189,7 @@ const Navbar = () => {
               Shop
             </Link>
             <Link
-              to="#"
+              to="/products"
               onClick={toggleNavDrawer}
               className="border-b pb-5 uppercase hover:text-blue-500 transition duration-300 shadow-sm font-medium
           "
@@ -197,7 +197,7 @@ const Navbar = () => {
               Product
             </Link>
             <Link
-              to="#"
+              to="/contact-us"
               onClick={toggleNavDrawer}
               className="border-b pb-5 uppercase hover:text-blue-500 transition duration-300 shadow-sm font-medium
           "
