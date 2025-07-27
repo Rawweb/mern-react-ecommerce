@@ -44,6 +44,33 @@ const Shop = () => {
     if (sortBy === 'price-desc') return b.price - a.price;
     if (sortBy === 'nameAsc') return a.name.localeCompare(b.name);
     if (sortBy === 'nameDesc') return b.name.localeCompare(a.name);
+    // Category prioritization
+    if (sortBy === 'livingRoom') {
+      return a.category === 'Living Room'
+        ? -1
+        : b.category === 'Living Room'
+        ? 1
+        : 0;
+    }
+    if (sortBy === 'bedroom') {
+      return a.category === 'Bedroom' ? -1 : b.category === 'Bedroom' ? 1 : 0;
+    }
+    if (sortBy === 'kitchen') {
+      return a.category === 'Kitchen' ? -1 : b.category === 'Kitchen' ? 1 : 0;
+    }
+    if (sortBy === 'bathroom') {
+      return a.category === 'Bathroom' ? -1 : b.category === 'Bathroom' ? 1 : 0;
+    }
+    if (sortBy === 'diningRoom') {
+      return a.category === 'Dining' ? -1 : b.category === 'Dining' ? 1 : 0;
+    }
+    if (sortBy === 'office') {
+      return a.category === 'Office' ? -1 : b.category === 'Office' ? 1 : 0;
+    }
+    if (sortBy === 'outdoor') {
+      return a.category === 'Outdoor' ? -1 : b.category === 'Outdoor' ? 1 : 0;
+    }
+
     return 0;
   });
 
@@ -104,16 +131,7 @@ const Shop = () => {
 
         {/* Main Product Area */}
         <div className="flex-1">
-          {/* Mobile Filter Toggle Button */}
-          <div className="lg:hidden flex justify-end mb-4">
-            <button
-              onClick={() => setShowMobileFilters(true)}
-              className="px-2 py-1 border border-gray-300 text-sm inline-flex items-center gap-2 hover:bg-gray-100"
-            >
-              <FaAlignRight className="size-4" />
-              Filter
-            </button>
-          </div>
+          
 
           {/* Top bar: Category + Sort + View Options */}
           <ShopTopBar
@@ -122,6 +140,19 @@ const Shop = () => {
             setSortBy={setSortBy}
             viewMode={viewMode}
             setViewMode={setViewMode}
+            onCategoryChange={category =>
+              setActiveFilters(prev => ({
+                ...prev,
+                category: category === 'default' ? undefined : category,
+              }))
+            }
+            onPriceChange={(min, max) =>
+              setActiveFilters(prev => ({
+                ...prev,
+                minPrice: min,
+                maxPrice: max,
+              }))
+            }
           />
           {/* ProductGrid or Empty State */}
           {paginatedProducts.length > 0 ? (
@@ -195,54 +226,7 @@ const Shop = () => {
         </div>
       </div>
 
-      {/* Mobile Filter Drawer */}
-      <AnimatePresence>
-        {showMobileFilters && (
-          <motion.div
-            className="fixed inset-0 z-50 flex lg:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {/* Background overlay */}
-            <motion.div
-              className="flex-1 bg-black bg-opacity-50"
-              onClick={() => setShowMobileFilters(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              exit={{ opacity: 0 }}
-            />
-
-            {/* Slide-in drawer */}
-            <motion.div
-              initial={{ x: '+100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '+100%' }}
-              transition={{ type: 'tween', duration: 0.3 }}
-              className="w-4/5 max-w-sm bg-white p-4 overflow-y-auto h-full shadow-xl"
-            >
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold">Filters</h3>
-                <button
-                  onClick={() => setShowMobileFilters(false)}
-                  className="text-gray-500 text-xl"
-                >
-                  ×
-                </button>
-              </div>
-
-              <FilterSidebar onFilterChange={setActiveFilters} />
-
-              <button
-                onClick={() => setShowMobileFilters(false)}
-                className="mt-4 w-full bg-blue-600 text-white py-2 rounded text-sm"
-              >
-                Apply Filters
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      
     </div>
   );
 };
