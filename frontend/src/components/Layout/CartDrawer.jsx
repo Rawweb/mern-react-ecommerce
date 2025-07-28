@@ -6,11 +6,10 @@ import { Link, useNavigate } from 'react-router-dom';
 const CartDrawer = ({ cartDrawerOpen, toggleCartDrawer }) => {
   const navigate = useNavigate();
 
-const handleCheckout = () => {
-  toggleCartDrawer();
-  navigate('/checkout');
-};
-
+  const handleCheckout = () => {
+    toggleCartDrawer();
+    navigate('/checkout');
+  };
 
   return (
     <div
@@ -33,16 +32,22 @@ const handleCheckout = () => {
 
       {/* Checkout Button */}
       <div className="p-4 bg-white sticky bottom-0">
-        <button onClick={handleCheckout} className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-blue-500 transition duration-300">
+        <button
+          onClick={handleCheckout}
+          className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-blue-500 transition duration-300"
+        >
           Checkout
         </button>
         <div className=" tracking-tighter pb-3 text-black mt-4 text-center  shadow-sm">
-          <Link
-            to="/cart"
+          <button
+            onClick={() => {
+              toggleCartDrawer();
+              navigate('/cart');
+            }}
             className="hover:text-blue-500 border-b border-gray-900 hover:border-blue-500 "
           >
             View Cart
-          </Link>
+          </button>
         </div>
       </div>
     </div>

@@ -35,3 +35,7 @@
 .scrollbar-blue:hover::-webkit-scrollbar-thumb {
   background-color: #3b82f6;
 }
+
+.input-style {
+  @apply border border-gray-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 w-full;
+}

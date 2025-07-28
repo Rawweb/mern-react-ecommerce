@@ -34,15 +34,28 @@ const Footer = () => {
                 </p>
                 {/* Social Icons */}
                 <div className="flex gap-5 mt-2">
-                  <Link>
-                    <LuInstagram className="size-6 hover:text-gray-200 transition" />
-                  </Link>
-                  <Link>
-                    <LuFacebook className="size-6 hover:text-gray-200 transition" />
-                  </Link>
-                  <Link>
-                    <MdOutlineMailOutline className="size-6 hover:text-gray-200 transition" />
-                  </Link>
+                  <a
+                    href="https://www.instagram.com/krawfile?igsh=MWRjMDUxZ2ttMTVqZQ=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LuInstagram className="size-6 text-gray-500 hover:text-gray-200 transition duration-300" />
+                  </a>
+
+                  <a
+                    href="https://m.facebook.com/rawimagix/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LuFacebook className="size-6 text-gray-500 hover:text-gray-200 transition duration-300" />
+                  </a>
+                  <a
+                    href="mailto:rawfile.webdev@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MdOutlineMailOutline className="size-6 text-gray-500 hover:text-gray-200 transition duration-300" />
+                  </a>
                 </div>
               </div>
 
