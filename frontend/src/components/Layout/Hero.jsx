@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
-import hero1 from "../../assets/hero1.jpg";
-import hero2 from "../../assets/hero2.jpg";
-import hero3 from "../../assets/hero3.jpg";
-import hero4 from "../../assets/hero4.jpg";
+import React, { useState, useEffect } from 'react';
+import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
+import hero1 from '../../assets/hero1.jpg';
+import hero2 from '../../assets/hero2.jpg';
+import hero3 from '../../assets/hero3.jpg';
+import hero4 from '../../assets/hero4.jpg';
 
 const Hero = () => {
   const slides = [hero1, hero2, hero3, hero4];
@@ -19,16 +19,15 @@ const Hero = () => {
     setCurrentIndex(isLastSlide ? 0 : currentIndex + 1);
   };
 
-  // ✅ Auto-slide every 5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       nextSlide();
     }, 5000);
-    return () => clearInterval(timer); // Clear on unmount
+    return () => clearInterval(timer);
   }, [currentIndex]);
 
   return (
-    <section>
+    <section className='dark:bg-gray-900'>
       <div className="container mx-auto h-[400px] md:h-[600px] lg:h-[750px] p-6 pt-0 relative group">
         <div className="relative w-full h-full">
           <div
@@ -38,7 +37,7 @@ const Hero = () => {
 
           {/* Left Arrow */}
           <div
-            className="hidden group-hover:block absolute top-[45%] md:left-10 left-2 text-2xl rounded-full p-2 bg-slate-200 text-gray-700 cursor-pointer"
+            className="hidden group-hover:block absolute top-[45%] md:left-10 left-2 text-2xl rounded-full p-2 bg-slate-200 text-gray-700 dark:bg-gray-700 dark:text-white cursor-pointer"
             onClick={prevSlide}
           >
             <BsArrowLeftShort className="w-8 h-8" />
@@ -46,7 +45,7 @@ const Hero = () => {
 
           {/* Right Arrow */}
           <div
-            className="hidden group-hover:block absolute top-[45%] md:right-10 right-2 text-2xl rounded-full p-2 bg-slate-200 text-gray-700 cursor-pointer"
+            className="hidden group-hover:block absolute top-[45%] md:right-10 right-2 text-2xl rounded-full p-2 bg-slate-200 text-gray-700 dark:bg-gray-700 dark:text-white cursor-pointer"
             onClick={nextSlide}
           >
             <BsArrowRightShort className="w-8 h-8" />
@@ -60,8 +59,8 @@ const Hero = () => {
                 onClick={() => setCurrentIndex(index)}
                 className={`h-3 rounded-full transition-all duration-300 ${
                   currentIndex === index
-                    ? "w-6 bg-white"
-                    : "w-3 bg-gray-300 border-2 border-gray-700 bg-opacity-50"
+                    ? 'w-6 bg-white dark:bg-blue-500'
+                    : 'w-3 bg-gray-300 dark:bg-gray-600 border-2 border-gray-700 dark:border-gray-400 bg-opacity-50'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

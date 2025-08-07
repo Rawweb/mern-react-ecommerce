@@ -34,7 +34,6 @@ const FilterSidebar = ({ onFilterChange }) => {
     { label: '$400.00+', min: 400, max: Infinity },
   ];
 
-  //   Update URL parameters based on filters
   useEffect(() => {
     const params = new URLSearchParams();
 
@@ -49,7 +48,6 @@ const FilterSidebar = ({ onFilterChange }) => {
     setSearchParams(params);
   }, [filters]);
 
-  // Initialize filters from URL on page load
   useEffect(() => {
     const category = searchParams.get('category') || '';
     const size = searchParams.getAll('size');
@@ -59,29 +57,24 @@ const FilterSidebar = ({ onFilterChange }) => {
     setFilters({ category, size, minPrice, maxPrice });
   }, []);
 
-  //   Handle filter changes
   useEffect(() => {
     if (onFilterChange) {
-      onFilterChange(filters); // send updated filters to parent
+      onFilterChange(filters);
     }
   }, [filters, onFilterChange]);
 
   return (
-    <div className="w-full lg:w-[250px] space-y-6 mt-5">
-      {/* Categories */}
+    <div className="w-full lg:w-[250px] space-y-6 mt-5 text-gray-800 dark:text-gray-200">
+      {/* Header */}
       <div className="flex items-center gap-2 mb-8">
         <FaAlignRight className="size-4" />
-        <h3 className="font-semibold  text-lg">Filter</h3>
+        <h3 className="font-semibold text-lg">Filter</h3>
       </div>
 
       {/* Active Filters */}
-      {(filters.category ||
-        filters.size.length > 0 ||
-        filters.minPrice !== 0 ||
-        filters.maxPrice !== Infinity) && (
+      {(filters.category || filters.size.length > 0 || filters.minPrice !== 0 || filters.maxPrice !== Infinity) && (
         <div className="flex flex-wrap gap-2 mb-4 items-center">
           <AnimatePresence>
-            {/* Category */}
             {filters.category && (
               <motion.span
                 key="category"
@@ -89,21 +82,20 @@ const FilterSidebar = ({ onFilterChange }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
                 transition={{ duration: 0.2 }}
-                className="bg-blue-100 text-blue-700 px-3 py-1 text-sm flex items-center gap-1"
+                className="bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-200 px-3 py-1 text-sm flex items-center gap-1"
               >
                 {filters.category}
                 <button
                   onClick={() =>
                     setFilters(prev => ({ ...prev, category: '' }))
                   }
-                  className="ml-1 text-blue-500 hover:text-blue-700"
+                  className="ml-1 text-blue-500 hover:text-blue-700 dark:hover:text-blue-300"
                 >
                   ×
                 </button>
               </motion.span>
             )}
 
-            {/* Sizes */}
             {filters.size.map(size => (
               <motion.span
                 key={size}
@@ -111,7 +103,7 @@ const FilterSidebar = ({ onFilterChange }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
                 transition={{ duration: 0.2 }}
-                className="bg-blue-100 text-blue-700 px-3 py-1 text-sm flex items-center gap-1"
+                className="bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-200 px-3 py-1 text-sm flex items-center gap-1"
               >
                 {size}
                 <button
@@ -121,14 +113,13 @@ const FilterSidebar = ({ onFilterChange }) => {
                       size: prev.size.filter(s => s !== size),
                     }))
                   }
-                  className="ml-1 text-blue-500 hover:text-blue-700"
+                  className="ml-1 text-blue-500 hover:text-blue-700 dark:hover:text-blue-300"
                 >
                   ×
                 </button>
               </motion.span>
             ))}
 
-            {/* Price Range */}
             {(filters.minPrice !== 0 || filters.maxPrice !== Infinity) && (
               <motion.span
                 key="price"
@@ -136,10 +127,9 @@ const FilterSidebar = ({ onFilterChange }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
                 transition={{ duration: 0.2 }}
-                className="bg-blue-100 text-blue-700 px-3 py-1 text-sm flex items-center gap-1"
+                className="bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-200 px-3 py-1 text-sm flex items-center gap-1"
               >
-                ${filters.minPrice} -{' '}
-                {filters.maxPrice === Infinity ? '∞' : `$${filters.maxPrice}`}
+                ${filters.minPrice} - {filters.maxPrice === Infinity ? '∞' : `$${filters.maxPrice}`}
                 <button
                   onClick={() =>
                     setFilters(prev => ({
@@ -148,7 +138,7 @@ const FilterSidebar = ({ onFilterChange }) => {
                       maxPrice: Infinity,
                     }))
                   }
-                  className="ml-1 text-blue-500 hover:text-blue-700"
+                  className="ml-1 text-blue-500 hover:text-blue-700 dark:hover:text-blue-300"
                 >
                   ×
                 </button>
@@ -160,18 +150,16 @@ const FilterSidebar = ({ onFilterChange }) => {
 
       {/* Category Filter */}
       <div>
-        <h3 className="font-semibold mb-2 text-gray-800 uppercase">
-          Categories
-        </h3>
+        <h3 className="font-semibold mb-2 uppercase">Categories</h3>
         <ul className="space-y-1">
           {categories.map(category => (
             <li
               key={category}
               onClick={() => setFilters(prev => ({ ...prev, category }))}
-              className={`cursor-pointer px-2 py-1 transition ${
+              className={`cursor-pointer px-2 py-1 transition rounded ${
                 filters.category === category
                   ? 'bg-blue-500 text-white'
-                  : 'hover:bg-gray-100'
+                  : 'hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
             >
               {category}
@@ -182,7 +170,7 @@ const FilterSidebar = ({ onFilterChange }) => {
 
       {/* Size Filter */}
       <div>
-        <h3 className="font-semibold mb-2 text-gray-800 uppercase">Size</h3>
+        <h3 className="font-semibold mb-2 uppercase">Size</h3>
         <ul className="space-y-2">
           {sizes.map(size => (
             <li key={size} className="flex items-center space-x-2">
@@ -200,9 +188,9 @@ const FilterSidebar = ({ onFilterChange }) => {
                     return { ...prev, size: newSize };
                   });
                 }}
-                className="size-4 accent-blue-500 focus:ring-blue-400 border border-gray-300 rounded"
+                className="size-4 accent-blue-500 border border-gray-300 dark:border-gray-600 rounded"
               />
-              <label htmlFor={`size-${size}`} className="text-sm text-gray-700">
+              <label htmlFor={`size-${size}`} className="text-sm">
                 {size}
               </label>
             </li>
@@ -212,7 +200,7 @@ const FilterSidebar = ({ onFilterChange }) => {
 
       {/* Price Filter */}
       <div>
-        <h3 className="font-semibold mb-2 text-gray-800 uppercase">Price</h3>
+        <h3 className="font-semibold mb-2 uppercase">Price</h3>
         <ul className="space-y-2">
           {priceRanges.map((range, idx) => {
             const isChecked =
@@ -222,7 +210,7 @@ const FilterSidebar = ({ onFilterChange }) => {
                 <input
                   type="checkbox"
                   checked={isChecked}
-                  className="size-4 accent-blue-500 focus-ring-blue-400 border border-gray-300 rounded"
+                  className="size-4 accent-blue-500 border border-gray-300 dark:border-gray-600 rounded"
                   onChange={() =>
                     setFilters(prev => ({
                       ...prev,
@@ -248,7 +236,7 @@ const FilterSidebar = ({ onFilterChange }) => {
             maxPrice: Infinity,
           })
         }
-        className="border border-gray-600 hover:border-red-500 py-1 px-2 hover:text-red-500 uppercase"
+        className="border border-gray-600 dark:border-gray-400 hover:border-red-500 dark:hover:border-red-400 py-1 px-2 hover:text-red-500 dark:hover:text-red-400 uppercase transition"
       >
         Reset Filters
       </button>

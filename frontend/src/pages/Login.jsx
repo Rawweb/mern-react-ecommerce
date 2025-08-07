@@ -32,26 +32,24 @@ const Login = () => {
       return;
     }
 
-    // All validations passed, disable button to prevent repeat clicks
     setIsButtonDisabled(true);
     toast.success('Login successful! Redirecting...');
 
     console.log('User Signed In', { identifier, password });
 
-    // Simulate clearing and redirect
     setTimeout(() => {
       setIdentifier('');
       setPassword('');
-      setIsButtonDisabled(false); // Reset button state
+      setIsButtonDisabled(false);
       navigate('/dashboard');
     }, 1500);
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
+    <div className="min-h-screen flex flex-col md:flex-row bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Left Section - Image */}
-      <div className="w-full md:w-1/2 bg-gray-100 flex-col items-center justify-center gap-20 flex md:relative">
-        <div className="text-xl font-bold mt-6 md:mt-0 md:absolute top-0 left-0 p-6">
+      <div className="w-full md:w-1/2 bg-gray-100 dark:bg-gray-800 flex-col items-center justify-center gap-20 flex md:relative">
+        <div className="text-xl font-bold mt-6 md:mt-0 md:absolute top-0 left-0 p-6 text-black dark:text-white">
           <Link to="/">3legant.</Link>
         </div>
         <img src={loginImage} alt="Chair" className="w-[100%] object-cover" />
@@ -60,9 +58,9 @@ const Login = () => {
       {/* Right Section - Form */}
       <div className="flex w-full md:w-1/2">
         <div className="flex flex-col justify-center p-10 w-full">
-          <div className="flex flex-col gap-2 mb-10 ">
-            <h1 className="text-3xl lg:text-4xl font-medium">Sign In</h1>
-            <p className="text-gray-500">
+          <div className="flex flex-col gap-2 mb-10">
+            <h1 className="text-3xl lg:text-4xl font-medium text-black dark:text-white">Sign In</h1>
+            <p className="text-gray-500 dark:text-gray-400">
               Don't have an account?{' '}
               <Link
                 to="/register"
@@ -79,20 +77,20 @@ const Login = () => {
               placeholder="Username or Email"
               value={identifier}
               onChange={e => setIdentifier(e.target.value)}
-              className="w-full border-b py-2 focus:outline-none"
+              className="w-full border-b py-2 focus:outline-none bg-transparent text-black dark:text-white border-gray-300 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
             />
 
-            <div className="relative ">
+            <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                className="w-full border-b py-2 focus:outline-none"
+                className="w-full border-b py-2 focus:outline-none bg-transparent text-black dark:text-white border-gray-300 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
               />
               <span
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-0 top-2 text-gray-500 cursor-pointer hover:text-blue-500 transition duration-300"
+                className="absolute right-0 top-2 text-gray-500 dark:text-gray-400 cursor-pointer hover:text-blue-500 transition duration-300"
               >
                 {showPassword ? (
                   <FaRegEyeSlash className="w-4 h-4" />
@@ -102,7 +100,7 @@ const Login = () => {
               </span>
             </div>
 
-            <div className="flex items-center justify-between text-sm">
+            <div className="flex items-center justify-between text-sm text-black dark:text-gray-300">
               <label className="flex items-center gap-2">
                 <input type="checkbox" className="w-4 h-4 accent-blue-500" />
                 Remember me

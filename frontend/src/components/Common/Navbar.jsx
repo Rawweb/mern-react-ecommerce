@@ -8,20 +8,15 @@ import { FaRegHeart } from 'react-icons/fa';
 import { SiInstagram, SiFacebook, SiGoogle } from 'react-icons/si';
 import SearchBar from './SearchBar';
 import CartDrawer from '../Layout/CartDrawer';
+import DarkModeToggle from './DarkkModeToggle';
 
 const Navbar = () => {
   const [cartDrawerOpen, setcartDrawerOpen] = useState(false);
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
-
-  const toggleCartDrawer = () => {
-    setcartDrawerOpen(!cartDrawerOpen);
-  };
-
-  const toggleNavDrawer = () => {
-    setIsNavDrawerOpen(!isNavDrawerOpen);
-  };
-
   const drawerRef = useRef();
+
+  const toggleCartDrawer = () => setcartDrawerOpen(!cartDrawerOpen);
+  const toggleNavDrawer = () => setIsNavDrawerOpen(!isNavDrawerOpen);
 
   useEffect(() => {
     const handleClickOutside = event => {
@@ -34,102 +29,62 @@ const Navbar = () => {
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isNavDrawerOpen]);
 
   return (
-    <section className=" shadow-sm">
+    <section className="shadow-sm dark:bg-gray-900">
       <nav className="container mx-auto flex justify-between items-center p-6 py-4">
-        {/* Left: Logo */}
-        <div className="text-xl font-bold">
+        {/* Logo */}
+        <div className="text-xl font-bold dark:text-white">
           <Link to="/">3legant.</Link>
         </div>
 
-        {/* Center: Navigation */}
+        {/* Navigation */}
         <div className="space-x-6 hidden md:flex">
-          <NavLink
-            to="/home"
-            className={({ isActive }) =>
-              ` font-medium uppercase transition duration-300 ${
-                isActive
-                  ? 'text-blue-500 border-b border-blue-500'
-                  : 'text-gray-900 hover:text-blue-500'
-              }`
-            }
-          >
-            Home
-          </NavLink>
-
-          <NavLink
-            to="/shop"
-            className={({ isActive }) =>
-              `font-medium uppercase transition duration-300 ${
-                isActive
-                  ? 'text-blue-500 border-b border-blue-500'
-                  : 'text-gray-900 hover:text-blue-500'
-              }`
-            }
-          >
-            Shop
-          </NavLink>
-
-          <NavLink
-            to="/products"
-            className={({ isActive }) =>
-              `font-medium uppercase transition duration-300 ${
-                isActive
-                  ? 'text-blue-500 border-b border-blue-500'
-                  : 'text-gray-900 hover:text-blue-500'
-              }`
-            }
-          >
-            Products
-          </NavLink>
-
-          <NavLink
-            to="/contact-us"
-            className={({ isActive }) =>
-              `font-medium uppercase transition duration-300 ${
-                isActive
-                  ? 'text-blue-500 border-b border-blue-500'
-                  : 'text-gray-900 hover:text-blue-500'
-              }`
-            }
-          >
-            Contact Us
-          </NavLink>
+          {['/home', '/shop', '/products', '/contact-us'].map(path => (
+            <NavLink
+              key={path}
+              to={path}
+              className={({ isActive }) =>
+                `font-medium uppercase transition duration-300 ${
+                  isActive
+                    ? 'text-blue-500 border-b border-blue-500'
+                    : 'text-gray-900 dark:text-white hover:text-blue-500'
+                }`
+              }
+            >
+              {path.replace('/', '').replace('-', ' ')}
+            </NavLink>
+          ))}
         </div>
 
-        {/* Right: Buttons */}
+        {/* Icons & Actions */}
         <div className="flex items-center space-x-4">
+          <DarkModeToggle />
+
           <Link to="/profile">
-            <HiOutlineUserCircle className="h-6 w-6 hover:text-blue-500 transition duration-300" />
+            <HiOutlineUserCircle className="h-6 w-6 hover:text-blue-500 transition duration-300 dark:text-white" />
           </Link>
 
-          {/* Cart Button */}
           <button onClick={toggleCartDrawer} className="relative group">
-            <LiaShoppingBagSolid className="h-6 w-6 group-hover:text-blue-500 transition duration-300" />
-            <span className="absolute -top-2 -right-2 bg-black text-white rounded-full w-5 h-5 flex items-center justify-center group-hover:bg-blue-500 transition duration-300">
+            <LiaShoppingBagSolid className="h-6 w-6 group-hover:text-blue-500 transition duration-300 dark:text-white" />
+            <span className="absolute -top-2 -right-2 bg-black text-white dark:bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center group-hover:bg-blue-600 transition duration-300">
               2
             </span>
           </button>
 
-          {/* Search Button */}
           <div className="overflow-hidden">
             <SearchBar />
           </div>
 
-          {/* Menu Button */}
           <button onClick={toggleNavDrawer} className="md:hidden block">
-            <RiMenuFoldLine className="w-6 h-6 hover:text-blue-500 transition duration-300" />
+            <RiMenuFoldLine className="w-6 h-6 hover:text-blue-500 transition duration-300 dark:text-white" />
           </button>
         </div>
       </nav>
 
-      {/* Cart */}
-      {/* Overlay */}
+      {/* Overlays */}
       {cartDrawerOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40"
@@ -141,141 +96,94 @@ const Navbar = () => {
         toggleCartDrawer={toggleCartDrawer}
       />
 
-      {/* Overlay */}
       {isNavDrawerOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40"
           onClick={toggleNavDrawer}
         />
       )}
-      {/* Mobile Navigation */}
+
+      {/* Mobile Drawer */}
       <div
         ref={drawerRef}
-        className={`fixed top-0 left-0 h-full w-3/4 bg-white z-50 transform transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto ${
+        className={`fixed top-0 left-0 h-full w-3/4 bg-white dark:bg-gray-900 z-50 transform transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto ${
           isNavDrawerOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        {/* Top */}
         <div className="mb-20">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 text-xl">
-            <Link  className="font-semibold">3legant.</Link>
+          <div className="flex items-center justify-between p-6 text-xl dark:text-white">
+            <Link className="font-semibold">3legant.</Link>
             <button onClick={toggleNavDrawer}>
-              <MdClose className="h-6 w-6 text-gray-700 hover:text-blue-500 transition duration-300" />
+              <MdClose className="h-6 w-6 text-gray-700 dark:text-white hover:text-blue-500 transition duration-300" />
             </button>
           </div>
 
-          {/* Search Bar*/}
           <div className="mt-6 p-6">
             <SearchBar />
           </div>
 
-          {/* Links */}
-          <div className="flex flex-col p-6 mt-4 gap-4 text-sm">
-            <Link
-              to="/home"
-              onClick={toggleNavDrawer}
-              className="border-b pb-5 uppercase hover:text-blue-500 transition duration-300 shadow-sm font-medium
-          "
-            >
-              Home
-            </Link>
-            <Link
-              to="/shop"
-              onClick={toggleNavDrawer}
-              className="border-b pb-5 uppercase hover:text-blue-500 transition duration-300 shadow-sm font-medium
-          "
-            >
-              Shop
-            </Link>
-            <Link
-              to="/products"
-              onClick={toggleNavDrawer}
-              className="border-b pb-5 uppercase hover:text-blue-500 transition duration-300 shadow-sm font-medium
-          "
-            >
-              Product
-            </Link>
-            <Link
-              to="/contact-us"
-              onClick={toggleNavDrawer}
-              className="border-b pb-5 uppercase hover:text-blue-500 transition duration-300 shadow-sm font-medium
-          "
-            >
-              Contact Us
-            </Link>
+          <div className="flex flex-col p-6 mt-4 gap-4 text-sm dark:text-white">
+            {['/home', '/shop', '/products', '/contact-us'].map(path => (
+              <Link
+                key={path}
+                to={path}
+                onClick={toggleNavDrawer}
+                className="border-b dark:border-gray-700 pb-5 uppercase hover:text-blue-500 transition duration-300 shadow-sm font-medium"
+              >
+                {path.replace('/', '').replace('-', ' ')}
+              </Link>
+            ))}
           </div>
         </div>
 
         {/* Bottom */}
         <div className="mt-20">
-          <div className="flex justify-between items-center p-6 border-b shadow-sm text-sm">
-            <Link
-              to="#"
-              onClick={toggleNavDrawer}
-              className="font-medium hover:text-blue-500"
+          {['Cart', 'Wishlist'].map(label => (
+            <div
+              key={label}
+              className="flex justify-between items-center p-6 border-b shadow-sm text-sm dark:text-white dark:border-gray-700"
             >
-              Cart
-            </Link>
-            <button
-              onClick={toggleNavDrawer}
-              className="flex justify-center items-center relative group"
-            >
-              <LiaShoppingBagSolid className="h-5 w-5 group-hover:text-blue-500 transition duration-300" />
-              <span className="bg-black ml-1 text-white rounded-full w-4 h-4 flex items-center justify-center group-hover:bg-blue-500 transition duration-300">
-                2
-              </span>
-            </button>
-          </div>
+              <Link
+                to="#"
+                onClick={toggleNavDrawer}
+                className="font-medium hover:text-blue-500"
+              >
+                {label}
+              </Link>
+              <button
+                onClick={toggleNavDrawer}
+                className="flex items-center group"
+              >
+                {label === 'Cart' ? (
+                  <LiaShoppingBagSolid className="h-5 w-5 group-hover:text-blue-500 transition" />
+                ) : (
+                  <FaRegHeart className="h-5 w-5 group-hover:text-blue-500 transition" />
+                )}
+                <span className="bg-black dark:bg-blue-500 ml-1 text-white rounded-full w-4 h-4 flex items-center justify-center group-hover:bg-blue-600 transition" />
+              </button>
+            </div>
+          ))}
 
-          <div className="flex justify-between items-center p-6 border-b shadow-sm text-sm">
-            <Link
-              to="#"
-              onClick={toggleNavDrawer}
-              className=" font-medium hover:text-blue-500"
-            >
-              Wishlist
-            </Link>
-            <button
-              onClick={toggleNavDrawer}
-              className="flex justify-center items-center relative group"
-            >
-              <FaRegHeart className="h-5 w-5 group-hover:text-blue-500 transition duration-300" />
-              <span className="bg-black ml-1 text-white rounded-full w-4 h-4 flex items-center justify-center group-hover:bg-blue-500 transition duration-300">
-                2
-              </span>
-            </button>
-          </div>
           <div className="mt-4 p-6">
             <button
               onClick={toggleNavDrawer}
-              className="bg-black text-white py-4 px-6 rounded-md w-full hover:bg-blue-500 transition duration-300"
+              className="bg-black dark:bg-blue-500 text-white py-4 px-6 rounded-md w-full hover:bg-blue-600 transition duration-300"
             >
               <Link to="/login">Sign In</Link>
             </button>
 
-            <div className="flex mt-4 items-center gap-6">
-              <a
-                href="#"
-                onClick={toggleNavDrawer}
-                className="hover:text-blue-500 transition-colors duration-300"
-              >
-                <SiInstagram className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                onClick={toggleNavDrawer}
-                className="hover:text-blue-500 transition-colors duration-300"
-              >
-                <SiFacebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                onClick={toggleNavDrawer}
-                className="hover:text-blue-500 transition-colors duration-300"
-              >
-                <SiGoogle className="h-5 w-5" />
-              </a>
+            <div className="flex mt-4 items-center gap-6 dark:text-white">
+              {[SiInstagram, SiFacebook, SiGoogle].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  onClick={toggleNavDrawer}
+                  className="hover:text-blue-500 transition"
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
             </div>
           </div>
         </div>

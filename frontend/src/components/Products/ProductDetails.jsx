@@ -23,18 +23,9 @@ const selectedProduct = {
   sizes: ['S', 'M', 'L', 'XL'],
   colors: ['Black', 'Red', 'Green', 'Blue'],
   images: [
-    {
-      url: 'https://picsum.photos/200/300/?random=15',
-      altText: 'Tray Table Image 1',
-    },
-    {
-      url: 'https://picsum.photos/200/300/?random=17',
-      altText: 'Tray Table Image 2',
-    },
-    {
-      url: 'https://picsum.photos/200/300/?random=19',
-      altText: 'Tray Table Image 3',
-    },
+    { url: 'https://picsum.photos/200/300/?random=15', altText: 'Image 1' },
+    { url: 'https://picsum.photos/200/300/?random=17', altText: 'Image 2' },
+    { url: 'https://picsum.photos/200/300/?random=19', altText: 'Image 3' },
   ],
 };
 
@@ -44,54 +35,42 @@ const similarProducts = [
     name: 'Bamboo Basket',
     price: 24.99,
     rating: 4,
-    image: [
-      { url: 'https://picsum.photos/200/300?random=33', altText: 'Basket' },
-    ],
+    image: [{ url: 'https://picsum.photos/200/300?random=33' }],
   },
   {
     _id: '2',
     name: 'Wooden Stand',
     price: 99.99,
     rating: 3.3,
-    image: [
-      { url: 'https://picsum.photos/200/300?random=44', altText: 'Wood Stand' },
-    ],
+    image: [{ url: 'https://picsum.photos/200/300?random=44' }],
   },
   {
     _id: '3',
     name: 'Tray Table',
     price: 79.99,
     rating: 5,
-    image: [
-      { url: 'https://picsum.photos/200/300?random=55', altText: 'Tray Table' },
-    ],
+    image: [{ url: 'https://picsum.photos/200/300?random=55' }],
   },
   {
     _id: '4',
     name: 'Tray Table',
     price: 79.99,
     rating: 3.5,
-    image: [
-      { url: 'https://picsum.photos/200/300?random=56', altText: 'Tray Table' },
-    ],
+    image: [{ url: 'https://picsum.photos/200/300?random=56' }],
   },
   {
     _id: '5',
     name: 'Tray Table',
     price: 79.99,
     rating: 2.5,
-    image: [
-      { url: 'https://picsum.photos/200/300?random=45', altText: 'Tray Table' },
-    ],
+    image: [{ url: 'https://picsum.photos/200/300?random=45' }],
   },
   {
     _id: '6',
     name: 'Tray Table',
     price: 79.99,
     rating: 4,
-    image: [
-      { url: 'https://picsum.photos/200/300?random=65', altText: 'Tray Table' },
-    ],
+    image: [{ url: 'https://picsum.photos/200/300?random=65' }],
   },
 ];
 
@@ -137,23 +116,20 @@ const ProductDetails = () => {
   }, [currentImageIndex]);
 
   const handleNextImage = () => {
-    setCurrentImageIndex(prevIndex =>
-      prevIndex === selectedProduct.images.length - 1 ? 0 : prevIndex + 1
+    setCurrentImageIndex(prev =>
+      prev === selectedProduct.images.length - 1 ? 0 : prev + 1
     );
   };
 
   const handlePrevImage = () => {
-    setCurrentImageIndex(prevIndex =>
-      prevIndex === 0 ? selectedProduct.images.length - 1 : prevIndex - 1
+    setCurrentImageIndex(prev =>
+      prev === 0 ? selectedProduct.images.length - 1 : prev - 1
     );
   };
 
   const handleQuantityChange = action => {
-    if (action === 'plus') {
-      setQuantity(prev => prev + 1);
-    } else if (action === 'minus' && quantity > 1) {
-      setQuantity(prev => prev - 1);
-    }
+    if (action === 'plus') setQuantity(prev => prev + 1);
+    else if (action === 'minus' && quantity > 1) setQuantity(prev => prev - 1);
   };
 
   const handleAddToCart = () => {
@@ -182,37 +158,30 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="container mx-auto p-6 min-h-screen">
+    <div className="container mx-auto p-6 min-h-screen dark:text-gray-100">
       <Breadcrumbs crumbs={breadcrumbItems} />
 
       <div className="flex flex-col md:flex-row gap-10">
-        {/* Main Product Image */}
+        {/* Product Image */}
         <div className="w-full md:w-2/5 flex flex-col gap-4">
-          <div className="relative bg-gray-100 w-full h-[600px] flex items-center justify-center p-6 overflow-hidden">
-            <div className="group w-full h-full flex items-center justify-center">
-              {mainImage && (
-                <img
-                  src={mainImage}
-                  alt="Main Product Image"
-                  className="object-contain size-[400px] transition-all duration-300 group-hover:scale-110"
-                />
-              )}
-            </div>
+          <div className="relative bg-gray-100 dark:bg-gray-800 w-full h-[600px] flex items-center justify-center p-6 overflow-hidden">
+            {mainImage && (
+              <img
+                src={mainImage}
+                alt="Main Product"
+                className="object-contain size-[400px] transition-all duration-300 group-hover:scale-110"
+              />
+            )}
+            {/* Arrows */}
             <button
               type="button"
               onClick={handlePrevImage}
               disabled={currentImageIndex === 0}
-              className={`absolute top-1/2 -translate-y-1/2 left-4 size-7 z-10 transition-opacity duration-300 flex items-center justify-center rounded-full
-                ${
-                  currentImageIndex === 0
-                    ? 'text-gray-300 cursor-not-allowed'
-                    : 'text-gray-600 hover:text-blue-500 cursor-pointer'
-                }`}
-              style={{
-                pointerEvents: currentImageIndex === 0 ? 'none' : 'auto',
-              }}
-              tabIndex={currentImageIndex === 0 ? -1 : 0}
-              aria-disabled={currentImageIndex === 0}
+              className={`absolute top-1/2 -translate-y-1/2 left-4 size-7 z-10 rounded-full ${
+                currentImageIndex === 0
+                  ? 'text-gray-300 cursor-not-allowed'
+                  : 'text-gray-600 hover:text-blue-500 dark:text-white'
+              }`}
             >
               <IoArrowBackCircleOutline className="size-7" />
             </button>
@@ -220,38 +189,27 @@ const ProductDetails = () => {
               type="button"
               onClick={handleNextImage}
               disabled={currentImageIndex === selectedProduct.images.length - 1}
-              className={`absolute top-1/2 -translate-y-1/2 right-4 size-7 z-10 transition-opacity duration-300 flex items-center justify-center rounded-full
-                ${
-                  currentImageIndex === selectedProduct.images.length - 1
-                    ? 'text-gray-300 cursor-not-allowed'
-                    : 'text-gray-600 hover:text-blue-500 cursor-pointer'
-                }`}
-              style={{
-                pointerEvents:
-                  currentImageIndex === selectedProduct.images.length - 1
-                    ? 'none'
-                    : 'auto',
-              }}
-              tabIndex={
-                currentImageIndex === selectedProduct.images.length - 1 ? -1 : 0
-              }
-              aria-disabled={
+              className={`absolute top-1/2 -translate-y-1/2 right-4 size-7 z-10 rounded-full ${
                 currentImageIndex === selectedProduct.images.length - 1
-              }
+                  ? 'text-gray-300 cursor-not-allowed'
+                  : 'text-gray-600 hover:text-blue-500 dark:text-white'
+              }`}
             >
               <IoArrowForwardCircleOutline className="size-7" />
             </button>
           </div>
 
-          {/* Thumbnail Images */}
-          <div className="flex w-full gap-1 ">
+          {/* Thumbnails */}
+          <div className="flex w-full gap-1">
             {selectedProduct.images.map((image, index) => (
               <img
                 key={index}
                 src={image.url}
-                alt={image.altText || `Thumbnail ${index}`}
-                className={`lg:size-48 size-32 object-cover border hover:border-black cursor-pointer transition duration-300 ${
-                  mainImage === image.url ? 'border-black' : 'border-gray-300'
+                alt={image.altText}
+                className={`lg:size-48 size-32 object-cover border cursor-pointer transition duration-300 ${
+                  mainImage === image.url
+                    ? 'border-black dark:border-white'
+                    : 'border-gray-300'
                 }`}
                 onClick={() => {
                   setMainImage(image.url);
@@ -262,30 +220,34 @@ const ProductDetails = () => {
           </div>
         </div>
 
+        {/* Product Info */}
         <div className="w-full md:w-1/2">
           <div className="flex items-center mb-4">
             {renderStars(selectedProduct.rating)}
-            <span className="text-gray-600 ml-2">
+            <span className="text-gray-600 dark:text-gray-300 ml-2">
               {selectedProduct.reviews} Reviews
             </span>
           </div>
 
           <h1 className="text-3xl font-semibold">{selectedProduct.name}</h1>
-          <p className="text-gray-500 mt-2 mb-4 font-medium">
+          <p className="text-gray-500 dark:text-gray-300 mt-2 mb-4 font-medium">
             {selectedProduct.description}
           </p>
 
-          <p className="text-2xl font-semibold mb-4 border-b border-gray-300 pb-4">
+          <p className="text-2xl font-semibold mb-4 border-b border-gray-300 dark:border-gray-600 pb-4">
             ${selectedProduct.price}{' '}
             {selectedProduct.originalPrice && (
-              <span className="text-gray-500 line-through font-normal">
+              <span className="text-gray-500 dark:text-gray-400 line-through font-normal">
                 ${selectedProduct.originalPrice}
               </span>
             )}
           </p>
 
+          {/* Size */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-500 mb-2">Size:</h3>
+            <h3 className="text-lg font-semibold text-gray-500 dark:text-gray-400 mb-2">
+              Size:
+            </h3>
             <p className="mb-2 text-lg font-medium">
               {sizeLabels[selectedSize] || ''}
             </p>
@@ -295,7 +257,9 @@ const ProductDetails = () => {
                   key={size}
                   onClick={() => setSelectedSize(size)}
                   className={`px-4 py-2 border rounded-md ${
-                    selectedSize === size ? 'bg-black text-white' : ''
+                    selectedSize === size
+                      ? 'bg-black text-white'
+                      : 'dark:text-gray-300 dark:border-gray-600'
                   }`}
                 >
                   {size}
@@ -304,31 +268,30 @@ const ProductDetails = () => {
             </div>
           </div>
 
+          {/* Colors */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-500 mb-2">
+            <h3 className="text-lg font-semibold text-gray-500 dark:text-gray-400 mb-2">
               Choose Color:
             </h3>
-            <div>
-              <p className="mb-2 text-lg font-medium">{selectedColor}</p>
-              <div className="mb-4 space-x-2">
-                {colors.map((color, index) => (
-                  <button
-                    key={index}
-                    className={`size-10 rounded-full border ${color.class} ${
-                      selectedColor === color.name
-                        ? 'border-black'
-                        : 'border-gray-300'
-                    }`}
-                    onClick={() => setSelectedColor(color.name)}
-                    aria-label={`Select ${color.name}`}
-                  ></button>
-                ))}
-              </div>
+            <p className="mb-2 text-lg font-medium">{selectedColor}</p>
+            <div className="mb-4 space-x-2">
+              {colors.map(color => (
+                <button
+                  key={color.name}
+                  className={`size-10 rounded-full border ${color.class} ${
+                    selectedColor === color.name
+                      ? 'border-black dark:border-white'
+                      : 'border-gray-300'
+                  }`}
+                  onClick={() => setSelectedColor(color.name)}
+                ></button>
+              ))}
             </div>
           </div>
 
+          {/* Quantity and Wishlist */}
           <div className="flex flex-col md:flex-row items-stretch lg:items-center gap-4 mb-4">
-            <div className="flex items-center justify-between gap-6 bg-gray-100 px-6 py-3 rounded-md">
+            <div className="flex items-center justify-between gap-6 bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-md">
               <button
                 onClick={() => handleQuantityChange('minus')}
                 className="text-2xl hover:text-blue-500"
@@ -346,17 +309,17 @@ const ProductDetails = () => {
 
             <button
               onClick={handleWishlistToggle}
-              className={`border border-gray-300 shadow-sm rounded-md px-6 py-3 w-full flex items-center justify-center gap-2 group transition duration-300 ${
-                isWishlisted ? 'bg-blue-500' : 'hover:bg-gray-100'
+              className={`border border-gray-300 dark:border-gray-600 shadow-sm rounded-md px-6 py-3 w-full flex items-center justify-center gap-2 group transition duration-300 ${
+                isWishlisted
+                  ? 'bg-blue-500 text-white'
+                  : 'hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
             >
               <FaRegHeart
-                className={`size-6 transition duration-300 ${
-                  isWishlisted ? 'text-white' : ''
-                }`}
+                className={`size-6 ${isWishlisted ? 'text-white' : ''}`}
               />
               <p
-                className={`font-semibold text-lg transition duration-300 ${
+                className={`font-semibold text-lg ${
                   isWishlisted ? 'text-white' : ''
                 }`}
               >
@@ -365,6 +328,7 @@ const ProductDetails = () => {
             </button>
           </div>
 
+          {/* Add to Cart */}
           <button
             onClick={handleAddToCart}
             disabled={isButtonDisabled}
@@ -377,16 +341,17 @@ const ProductDetails = () => {
             <p>Add to cart</p>
           </button>
 
+          {/* SKU Table */}
           <table className="w-1/2 text-left mb-4">
             <tbody>
               <tr>
-                <td className="text-gray-500 uppercase font-medium py-2">
+                <td className="text-gray-500 dark:text-gray-400 uppercase font-medium py-2">
                   sku
                 </td>
                 <td className="font-medium py-2">1117</td>
               </tr>
               <tr>
-                <td className="text-gray-500 uppercase font-medium py-2">
+                <td className="text-gray-500 dark:text-gray-400 uppercase font-medium py-2">
                   Category
                 </td>
                 <td className="font-medium py-2">Furniture</td>
@@ -394,11 +359,12 @@ const ProductDetails = () => {
             </tbody>
           </table>
 
+          {/* Accordion */}
           <ProductAccordion />
         </div>
       </div>
 
-      {/* Similar Products Section */}
+      {/* Similar Products */}
       <SimilarProducts products={similarProducts} />
     </div>
   );

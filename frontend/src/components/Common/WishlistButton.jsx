@@ -7,10 +7,9 @@ const WishlistButton = ({ productId, className = '', size = 5 }) => {
 
   const toggleWishlist = () => {
     setWishlisted(prev => !prev);
-    toast.success(
-      !wishlisted ? 'Added to Wishlist' : 'Removed from Wishlist',
-      { duration: 2000 }
-    );
+    toast.success(!wishlisted ? 'Added to Wishlist' : 'Removed from Wishlist', {
+      duration: 2000,
+    });
   };
 
   const Icon = wishlisted ? FaHeart : FaRegHeart;
@@ -19,9 +18,9 @@ const WishlistButton = ({ productId, className = '', size = 5 }) => {
     <button
       onClick={toggleWishlist}
       aria-label="Toggle Wishlist"
-      className={`absolute top-4 -right-10 group-hover:right-4 group-hover:opacity-100 transition-all duration-300 z-10 bg-white p-2 rounded-full shadow-md ${className}`}
+      className={`absolute top-4 -right-10 group-hover:right-4 group-hover:opacity-100 transition-all duration-300 z-10 bg-white dark:bg-gray-800 p-2 rounded-full shadow-md ${className}`}
     >
-      <Icon className={`text-black size-${size}`} />
+      <Icon className={`text-black dark:text-white size-${size}`} />
     </button>
   );
 };

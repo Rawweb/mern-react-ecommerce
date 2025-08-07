@@ -24,14 +24,12 @@ const Register = () => {
     e.preventDefault();
     console.log('User Registered', { name, username, email, password });
 
-    // Clear form inputs
     setName('');
     setUsername('');
     setEmail('');
     setPassword('');
   };
 
-  // Function to check password strength
   const isPasswordStrong = value => {
     const length = value.length >= 8;
     const hasUppercase = /[A-Z]/.test(value);
@@ -44,7 +42,6 @@ const Register = () => {
     );
   };
 
-  // Update password checklist based on input
   const updatePasswordChecklist = value => {
     setPasswordChecklist({
       length: value.length >= 8,
@@ -56,10 +53,10 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
+    <div className="min-h-screen flex flex-col md:flex-row bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Left Section - Image */}
-      <div className="w-full md:w-1/2 bg-gray-100 flex-col items-center justify-center gap-20 flex md:relative">
-        <div className="text-xl font-bold mt-6 md:mt-0 md:absolute top-0 left-0 p-6">
+      <div className="w-full md:w-1/2 bg-gray-100 dark:bg-gray-800 flex-col items-center justify-center gap-20 flex md:relative">
+        <div className="text-xl font-bold mt-6 md:mt-0 md:absolute top-0 left-0 p-6 text-black dark:text-white">
           <Link to="/">3legant.</Link>
         </div>
         <img
@@ -72,9 +69,11 @@ const Register = () => {
       {/* Right Section - Form */}
       <div className="flex w-full md:w-1/2">
         <div className="flex flex-col justify-center p-10 w-full">
-          <div className="flex flex-col gap-2 mb-10 ">
-            <h1 className="text-3xl lg:text-4xl font-medium">Register</h1>
-            <p className="text-gray-500">
+          <div className="flex flex-col gap-2 mb-10">
+            <h1 className="text-3xl lg:text-4xl font-medium text-black dark:text-white">
+              Register
+            </h1>
+            <p className="text-gray-500 dark:text-gray-400">
               Already have an account?{' '}
               <Link
                 to="/login"
@@ -92,7 +91,7 @@ const Register = () => {
               required
               value={name}
               onChange={e => setName(e.target.value)}
-              className="w-full border-b py-2 focus:outline-none"
+              className="w-full border-b py-2 focus:outline-none bg-transparent text-black dark:text-white border-gray-300 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
             />
             <input
               type="text"
@@ -100,7 +99,7 @@ const Register = () => {
               required
               value={username}
               onChange={e => setUsername(e.target.value)}
-              className="w-full border-b py-2 focus:outline-none"
+              className="w-full border-b py-2 focus:outline-none bg-transparent text-black dark:text-white border-gray-300 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
             />
             <input
               type="email"
@@ -108,9 +107,10 @@ const Register = () => {
               required
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full border-b py-2 focus:outline-none"
+              className="w-full border-b py-2 focus:outline-none bg-transparent text-black dark:text-white border-gray-300 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
             />
-            <div className="relative ">
+
+            <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
@@ -126,11 +126,11 @@ const Register = () => {
                   );
                   updatePasswordChecklist(val);
                 }}
-                className="w-full border-b py-2 focus:outline-none"
+                className="w-full border-b py-2 focus:outline-none bg-transparent text-black dark:text-white border-gray-300 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
               />
               <span
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-0 top-2 text-gray-500 cursor-pointer hover:text-blue-500 transition duration-300"
+                className="absolute right-0 top-2 text-gray-500 dark:text-gray-400 cursor-pointer hover:text-blue-500 transition duration-300"
               >
                 {showPassword ? (
                   <FaRegEyeSlash className="w-4 h-4" />
@@ -142,12 +142,12 @@ const Register = () => {
 
             {/* Error Message */}
             {passwordError && (
-              <div className="text-sm text-gray-600 mt-2 space-y-1">
+              <div className="text-sm text-gray-600 dark:text-gray-400 mt-2 space-y-1">
                 <p
                   className={`${
                     passwordChecklist.length
                       ? 'text-green-600'
-                      : 'text-gray-400'
+                      : 'text-gray-400 dark:text-gray-500'
                   }`}
                 >
                   {passwordChecklist.length ? (
@@ -161,7 +161,7 @@ const Register = () => {
                   className={`${
                     passwordChecklist.uppercase
                       ? 'text-green-600'
-                      : 'text-gray-400'
+                      : 'text-gray-400 dark:text-gray-500'
                   }`}
                 >
                   {passwordChecklist.uppercase ? (
@@ -175,7 +175,7 @@ const Register = () => {
                   className={`${
                     passwordChecklist.lowercase
                       ? 'text-green-600'
-                      : 'text-gray-400'
+                      : 'text-gray-400 dark:text-gray-500'
                   }`}
                 >
                   {passwordChecklist.lowercase ? (
@@ -189,7 +189,7 @@ const Register = () => {
                   className={`${
                     passwordChecklist.number
                       ? 'text-green-600'
-                      : 'text-gray-400'
+                      : 'text-gray-400 dark:text-gray-500'
                   }`}
                 >
                   {passwordChecklist.number ? (
@@ -203,7 +203,7 @@ const Register = () => {
                   className={`${
                     passwordChecklist.specialChar
                       ? 'text-green-600'
-                      : 'text-gray-400'
+                      : 'text-gray-400 dark:text-gray-500'
                   }`}
                 >
                   {passwordChecklist.specialChar ? (
@@ -216,7 +216,7 @@ const Register = () => {
               </div>
             )}
 
-            <div className="flex items-center gap-2 text-xs lg:text-base ">
+            <div className="flex items-center gap-2 text-xs lg:text-base text-black dark:text-gray-300">
               <input
                 type="checkbox"
                 id="terms"
@@ -224,11 +224,11 @@ const Register = () => {
                 required
               />
               <label htmlFor="terms">
-                I agree with {''}
+                I agree with{' '}
                 <Link className="font-semibold hover:text-blue-500 transition duration-300">
                   Privacy Policy
-                </Link>
-                <span> and </span>
+                </Link>{' '}
+                and{' '}
                 <Link className="font-semibold hover:text-blue-500 transition duration-300">
                   Terms of Use
                 </Link>

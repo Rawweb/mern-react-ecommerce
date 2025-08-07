@@ -60,15 +60,19 @@ const ProductAccordion = () => {
         isOpen={openSection === 'info'}
         onClick={() => toggleSection('info')}
       >
-        <h3 className="font-medium text-gray-500 mb-2">Details</h3>
-        <p className="text-gray-700">
+        <h3 className="font-medium text-gray-500 dark:text-gray-400 mb-2">
+          Details
+        </h3>
+        <p className="text-gray-700 dark:text-gray-300">
           The tray table is crafted with lightweight, durable materials, making
           it ideal for easy mobility and compact storage. Its sleek design fits
           seamlessly into any room aesthetic.
         </p>
 
-        <h3 className="font-medium text-gray-500 mt-4 mb-2">Packaging</h3>
-        <ul className="text-gray-700 list-none">
+        <h3 className="font-medium text-gray-500 dark:text-gray-400 mt-4 mb-2">
+          Packaging
+        </h3>
+        <ul className="text-gray-700 dark:text-gray-300 list-none">
           <li>Width: 20" Height: 1½" Length: 21½"</li>
           <li>Weight: 7 lb 8 oz</li>
           <li>Package(s): 1</li>
@@ -83,8 +87,10 @@ const ProductAccordion = () => {
       >
         {questions.map((q, idx) => (
           <div key={idx} className="mb-4">
-            <h3 className="font-medium text-gray-800">Q: {q.question}</h3>
-            <p className="text-gray-700 mt-1 pl-2 border-l-2 border-blue-500">
+            <h3 className="font-medium text-gray-800 dark:text-gray-200">
+              Q: {q.question}
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300 mt-1 pl-2 border-l-2 border-blue-500">
               A: {q.answer}
             </p>
           </div>
@@ -98,26 +104,33 @@ const ProductAccordion = () => {
         onClick={() => toggleSection('reviews')}
       >
         {reviews.map((review, idx) => (
-          <div key={idx} className="flex gap-4 mb-6 border-b pb-4">
+          <div
+            key={idx}
+            className="flex gap-4 mb-6 border-b border-gray-300 dark:border-gray-600 pb-4"
+          >
             <img
               src={review.avatar}
               alt={review.name}
               className="rounded-full w-10 h-10 object-cover"
             />
             <div>
-              <h4 className="font-semibold">{review.name}</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-white">
+                {review.name}
+              </h4>
               <div className="flex items-center text-yellow-500">
                 {Array.from({ length: review.rating }).map((_, i) => (
                   <IoMdStar key={i} className="w-4 h-4" />
                 ))}
               </div>
-              <p className="text-gray-600 mt-1 text-sm">{review.comment}</p>
-              <div className="flex gap-4 mt-2 text-xs text-gray-500">
+              <p className="text-gray-600 dark:text-gray-300 mt-1 text-sm">
+                {review.comment}
+              </p>
+              <div className="flex gap-4 mt-2 text-xs text-gray-500 dark:text-gray-400">
                 <span>{review.date}</span>
-                <button className="hover:underline text-black font-medium">
+                <button className="hover:underline text-black dark:text-white font-medium">
                   Like
                 </button>
-                <button className="hover:underline text-black font-medium">
+                <button className="hover:underline text-black dark:text-white font-medium">
                   Reply
                 </button>
               </div>
@@ -133,14 +146,16 @@ const AccordionSection = ({ title, isOpen, onClick, children }) => (
   <div>
     <div
       onClick={onClick}
-      className="section-header flex items-center justify-between mb-4 border-b pb-2 cursor-pointer"
+      className="section-header flex items-center justify-between mb-4 border-b border-gray-300 dark:border-gray-600 pb-2 cursor-pointer"
     >
-      <h1 className="section-title font-medium uppercase">{title}</h1>
+      <h1 className="section-title font-medium uppercase text-gray-900 dark:text-white">
+        {title}
+      </h1>
       <button>
         {isOpen ? (
-          <FiChevronUp className="size-6" />
+          <FiChevronUp className="size-6 text-gray-700 dark:text-gray-200" />
         ) : (
-          <FiChevronDown className="size-6" />
+          <FiChevronDown className="size-6 text-gray-700 dark:text-gray-200" />
         )}
       </button>
     </div>

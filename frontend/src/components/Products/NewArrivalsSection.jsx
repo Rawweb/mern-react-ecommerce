@@ -169,102 +169,100 @@ const NewArrivalsSection = () => {
   }, []);
 
   return (
-    <section className=" mt-10 ">
-      <div className="container mx-auto p-6 relative">
-        {/* Top Head */}
-        <div className="flex justify-between items-center">
-          <div className="text-3xl md:text-4xl font-semibold">
-            <h1>New Arrival</h1>
-          </div>
-          {/* Scroll Buttons */}
-          <div className="absolute right-0 top-7 flex gap-2">
-            <button
-              onClick={() => scroll('left')}
-              disabled={!canScrollLeft}
-              className={`${
-                canScrollLeft
-                  ? 'hover:scale-110  hover:text-blue-500 active:scale-125 transition-transform duration-200'
-                  : 'text-gray-400 cursor-not-allowed'
-              }`}
-            >
-              <MdOutlineArrowLeft className="size-10" />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              className={`${
-                canScrollRight
-                  ? 'hover:scale-110 hover:text-blue-500 active:scale-125 transition-transform duration-200'
-                  : 'text-gray-400 cursor-not-allowed'
-              }`}
-            >
-              <MdOutlineArrowRight className="size-10" />
-            </button>
-          </div>
+  <section className="pt-10 dark:bg-gray-900">
+    <div className="container mx-auto p-6 relative">
+      {/* Top Head */}
+      <div className="flex justify-between items-center">
+        <div className="text-3xl md:text-4xl font-semibold">
+          <h1 className="text-gray-900 dark:text-white">New Arrival</h1>
         </div>
 
-        {/* Product List */}
-        <div
-          ref={scrollRef}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUpOrLeave}
-          onMouseLeave={handleMouseUpOrLeave}
-          className={`flex gap-6 mt-6 overflow-x-scroll scrollbar-blue pb-6 ${
-            isDragging ? 'cursor-grabbing' : 'cursor-grab'
-          }`}
-        >
-          {newArrivals.map(product => (
-            <div key={product._id} className="w-[280px] flex-shrink-0">
-              {/* Product Card */}
-              <div className="h-auto overflow-hidden flex flex-col relative bg-sec p-6 transition-all group duration-300">
-                {/* Badge and Heart */}
-                <div className="flex justify-between items-center">
-                  <h3
-                    className={`py-1 px-2 rounded-md text-sm absolute top-4 left-4 ${
-                      product.new ? 'bg-blue-500 text-white shadow-md' : ''
-                    }`}
-                  >
-                    {product.new && 'New'}
-                  </h3>
-                  <WishlistButton productId={product._id} />
-                </div>
+        {/* Scroll Buttons */}
+        <div className="absolute right-0 top-7 flex gap-2">
+          <button
+            onClick={() => scroll('left')}
+            disabled={!canScrollLeft}
+            className={`${
+              canScrollLeft
+                ? 'hover:scale-110 hover:text-blue-500 active:scale-125 transition-transform duration-200'
+                : 'text-gray-400 dark:text-gray-600 cursor-not-allowed'
+            }`}
+          >
+            <MdOutlineArrowLeft className="size-10" />
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            className={`${
+              canScrollRight
+                ? 'hover:scale-110 hover:text-blue-500 active:scale-125 transition-transform duration-200'
+                : 'text-gray-400 dark:text-gray-600 cursor-not-allowed'
+            }`}
+          >
+            <MdOutlineArrowRight className="size-10" />
+          </button>
+        </div>
+      </div>
 
-                {/* Product Image */}
-                <div className="flex-grow">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <img
-                      src={product.image[0]?.url}
-                      alt={product.image[0]?.url}
-                      draggable={false}
-                      className="py-8 object-contain size-72 transition-transform duration-500 group-hover:scale-110 rounded-lg"
-                    />
-                  </div>
-                </div>
+      {/* Product List */}
+      <div
+        ref={scrollRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
+        className={`flex gap-6 mt-6 overflow-x-scroll scrollbar-blue pb-6 ${
+          isDragging ? 'cursor-grabbing' : 'cursor-grab'
+        }`}
+      >
+        {newArrivals.map(product => (
+          <div key={product._id} className="w-[280px] flex-shrink-0">
+            {/* Product Card */}
+            <div className="h-auto overflow-hidden flex flex-col relative bg-sec dark:bg-gray-800 p-6 transition-all group duration-300 rounded">
+              {/* Badge and Heart */}
+              <div className="flex justify-between items-center">
+                <h3
+                  className={`py-1 px-2 rounded-md text-sm absolute top-4 left-4 ${
+                    product.new ? 'bg-blue-500 text-white shadow-md' : ''
+                  }`}
+                >
+                  {product.new && 'New'}
+                </h3>
+                <WishlistButton productId={product._id} />
+              </div>
 
-                {/* Add to Cart */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-8 opacity-0 group-hover:translate-y-1 group-hover:opacity-100 transition-all duration-500 z-10 w-full px-6">
-                  <AddToCartButton product={product} />
+              {/* Product Image */}
+              <div className="flex-grow">
+                <div className="w-full h-full flex items-center justify-center">
+                  <img
+                    src={product.image[0]?.url}
+                    alt={product.image[0]?.url}
+                    draggable={false}
+                    className="py-8 object-contain size-72 transition-transform duration-500 group-hover:scale-110 rounded-lg"
+                  />
                 </div>
               </div>
 
-              {/* Product Info */}
-              <Link to={`/product/${product._id}`}>
-                {' '}
-                <div className="flex flex-col mt-2">
-                  <div className="flex items-center">
-                    {renderStars(product.rating)}
-                  </div>
-
-                  <h4 className="font-semibold text-lg">{product.name}</h4>
-                  <p className="text-gray-500 font-medium">$ {product.price}</p>
-                </div>
-              </Link>
+              {/* Add to Cart */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-8 opacity-0 group-hover:translate-y-1 group-hover:opacity-100 transition-all duration-500 z-10 w-full px-6">
+                <AddToCartButton product={product} />
+              </div>
             </div>
-          ))}
-        </div>
+
+            {/* Product Info */}
+            <Link to={`/product/${product._id}`}>
+              <div className="flex flex-col mt-2">
+                <div className="flex items-center">{renderStars(product.rating)}</div>
+                <h4 className="font-semibold text-lg text-gray-900 dark:text-white">{product.name}</h4>
+                <p className="text-gray-500 dark:text-gray-400 font-medium">$ {product.price}</p>
+              </div>
+            </Link>
+          </div>
+        ))}
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
+
 };
 
 export default NewArrivalsSection;

@@ -1,11 +1,8 @@
-// components/Products/SimilarProducts.jsx
-
 import React, { useRef, useState, useEffect } from 'react';
 import { MdOutlineArrowRight, MdOutlineArrowLeft } from 'react-icons/md';
-import { FaRegHeart } from 'react-icons/fa';
-import renderStars from './RenderStars';
 import { Link } from 'react-router-dom';
 import WishlistButton from '../Common/WishlistButton';
+import renderStars from './RenderStars';
 
 const SimilarProducts = ({ products = [] }) => {
   const scrollRef = useRef(null);
@@ -60,7 +57,9 @@ const SimilarProducts = ({ products = [] }) => {
   return (
     <section className="mt-20">
       <div className="flex justify-between items-center mb-6 px-6">
-        <h2 className="text-2xl font-semibold">Similar Products</h2>
+        <h2 className="text-2xl font-semibold text-black dark:text-white">
+          Similar Products
+        </h2>
         <div className="flex gap-2">
           <button
             onClick={() => scroll('left')}
@@ -68,7 +67,7 @@ const SimilarProducts = ({ products = [] }) => {
             className={`${
               canScrollLeft
                 ? 'hover:scale-110 hover:text-blue-500 active:scale-125'
-                : 'text-gray-400 cursor-not-allowed'
+                : 'text-gray-400 dark:text-gray-600 cursor-not-allowed'
             }`}
           >
             <MdOutlineArrowLeft className="size-7" />
@@ -79,7 +78,7 @@ const SimilarProducts = ({ products = [] }) => {
             className={`${
               canScrollRight
                 ? 'hover:scale-110 hover:text-blue-500 active:scale-125'
-                : 'text-gray-400 cursor-not-allowed'
+                : 'text-gray-400 dark:text-gray-600 cursor-not-allowed'
             }`}
           >
             <MdOutlineArrowRight className="size-7" />
@@ -99,7 +98,7 @@ const SimilarProducts = ({ products = [] }) => {
       >
         {products.map(product => (
           <div key={product._id} className="w-[260px] flex-shrink-0">
-            <div className="bg-sec p-4 group relative overflow-hidden rounded-lg">
+            <div className="bg-sec dark:bg-gray-800 p-4 group relative overflow-hidden rounded-lg">
               <Link to={`/product/${product._id}`}>
                 <img
                   src={product.image[0].url}
@@ -108,15 +107,18 @@ const SimilarProducts = ({ products = [] }) => {
                   className="object-contain w-full h-60 group-hover:scale-105 transition-transform duration-300"
                 />
               </Link>
-
               <WishlistButton productId={product._id} />
             </div>
             <div className="mt-4">
               <div className="flex items-center">
                 {renderStars(product.rating)}
               </div>
-              <h4 className="font-semibold">{product.name}</h4>
-              <p className="text-gray-600">${product.price}</p>
+              <h4 className="font-semibold text-black dark:text-white">
+                {product.name}
+              </h4>
+              <p className="text-gray-600 dark:text-gray-400">
+                ${product.price}
+              </p>
             </div>
           </div>
         ))}

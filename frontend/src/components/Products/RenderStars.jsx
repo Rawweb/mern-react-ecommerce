@@ -8,16 +8,20 @@ const renderStars = rating => {
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
   for (let i = 0; i < fullStars; i++) {
-    stars.push(<IoMdStar key={`full-${i}`} className="size-5 text-black" />);
+    stars.push(
+      <IoMdStar key={`full-${i}`} className="size-5 text-black dark:text-yellow-400" />
+    );
   }
 
   if (hasHalfStar) {
-    stars.push(<IoMdStarHalf key="half" className="size-5 text-black" />);
+    stars.push(
+      <IoMdStarHalf key="half" className="size-5 text-black dark:text-yellow-400" />
+    );
   }
 
   for (let i = 0; i < emptyStars; i++) {
     stars.push(
-      <IoMdStarOutline key={`empty-${i}`} className="size-5 text-black" />
+      <IoMdStarOutline key={`empty-${i}`} className="size-5 text-black dark:text-yellow-400" />
     );
   }
 

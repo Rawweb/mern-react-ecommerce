@@ -9,16 +9,15 @@ import {
   FaCcPaypal,
   FaCcAmex,
 } from 'react-icons/fa6';
-
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="mt-10">
-      <div className="bg-black text-white lg:text-lg">
+    <footer className="pt-10 dark:bg-gray-900">
+      <div className="bg-black text-white dark:bg-gray-900 dark:text-gray-200 lg:text-lg dark:border-t">
         <div className="container mx-auto p-6">
           {/* Top */}
-          <div className="w-full border-b border-gray-500 py-10">
+          <div className="w-full border-b border-gray-500 dark:border-gray-700 py-10">
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
               {/* Logo + Socials */}
               <div className="flex flex-col gap-4">
@@ -41,7 +40,6 @@ const Footer = () => {
                   >
                     <LuInstagram className="size-6 text-gray-500 hover:text-gray-200 transition duration-300" />
                   </a>
-
                   <a
                     href="https://m.facebook.com/rawimagix/"
                     target="_blank"
@@ -113,10 +111,10 @@ const Footer = () => {
           </div>
 
           {/* Bottom */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 py-6 text-sm text-gray-400">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 py-6 text-sm text-gray-400 dark:text-gray-500">
             {/* Left: Copyright & Policies */}
             <div className="flex flex-col md:flex-row items-center gap-4 text-center">
-              <p className="text-xs md:text-sm text-gray-400">
+              <p className="text-xs md:text-sm">
                 © {new Date().getFullYear()} 3legant. All rights reserved.
               </p>
               <div className="flex gap-1 flex-wrap justify-center">

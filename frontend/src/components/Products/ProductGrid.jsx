@@ -16,10 +16,9 @@ const ProductGrid = ({ products, viewMode }) => {
       wasWishlisted ? prev.filter(id => id !== productId) : [...prev, productId]
     );
 
-    toast.success(
-      wasWishlisted ? 'Removed from wishlist' : 'Added to wishlist',
-      { duration: 2000 }
-    );
+    toast.success(wasWishlisted ? 'Removed from wishlist' : 'Added to wishlist', {
+      duration: 2000,
+    });
   };
 
   return (
@@ -38,7 +37,7 @@ const ProductGrid = ({ products, viewMode }) => {
             {viewMode === 'grid' ? (
               <>
                 {/* GRID VIEW */}
-                <div className="h-[350px] overflow-hidden flex flex-col relative bg-sec p-6 transition-all group duration-300">
+                <div className="h-[350px] overflow-hidden flex flex-col relative bg-sec p-6 transition-all group duration-300 dark:bg-gray-800">
                   <div className="flex justify-between items-center">
                     <h3
                       className={`py-1 px-2 rounded-md text-sm absolute top-4 left-4 ${
@@ -64,14 +63,12 @@ const ProductGrid = ({ products, viewMode }) => {
                     <AddToCartButton product={product} />
                   </div>
                 </div>
+
                 <Link to={`/product/${product._id}`}>
                   <div className="flex flex-col mt-2">
-                    <div className="flex items-center">
-                      {renderStars(product.rating)}
-                    </div>
-
-                    <h4 className="font-semibold text-lg">{product.name}</h4>
-                    <p className="text-gray-500 font-medium">
+                    <div className="flex items-center">{renderStars(product.rating)}</div>
+                    <h4 className="font-semibold text-lg dark:text-white">{product.name}</h4>
+                    <p className="text-gray-500 font-medium dark:text-gray-300">
                       $ {product.price}
                     </p>
                   </div>
@@ -81,7 +78,7 @@ const ProductGrid = ({ products, viewMode }) => {
               <>
                 {/* LIST VIEW */}
                 <div className="flex gap-4 flex-col sm:flex-row items-center">
-                  <div className="bg-sec p-6 transition-all w-full h-72 duration-300">
+                  <div className="bg-sec p-6 transition-all w-full h-72 duration-300 dark:bg-gray-800">
                     <Link
                       to={`/product/${product._id}`}
                       className="w-full sm:w-48 group"
@@ -95,28 +92,28 @@ const ProductGrid = ({ products, viewMode }) => {
                   </div>
 
                   <div className="w-full relative">
-                    <div className="flex items-center mb-2">
-                      {renderStars(product.rating)}
-                    </div>
-                    <h4 className="lg:text-lg font-semibold mb-2">
+                    <div className="flex items-center mb-2">{renderStars(product.rating)}</div>
+                    <h4 className="lg:text-lg font-semibold mb-2 dark:text-white">
                       {product.name}
                     </h4>
-                    <p className="font-semibold mb-2 text-sm lg:text-base">
+                    <p className="font-semibold mb-2 text-sm lg:text-base dark:text-white">
                       ${product.price}{' '}
                       {product.originalPrice && (
-                        <span className="text-gray-500 line-through font-normal">
+                        <span className="text-gray-500 dark:text-gray-400 line-through font-normal">
                           ${product.originalPrice}
                         </span>
                       )}
                     </p>
-                    <p className="text-gray-500 mb-2 text-sm lg:text-base">
+                    <p className="text-gray-500 dark:text-gray-300 mb-2 text-sm lg:text-base">
                       {product.description}
                     </p>
+
                     <AddToCartButton product={product} className="text-sm" />
+
                     <button
                       onClick={() => handleWishlistToggle(product._id)}
                       className={`text-sm mt-2 w-full flex items-center justify-center gap-1 group transition duration-300 ${
-                        isWishlisted ? 'text-blue-500' : 'hover:text-gray-500'
+                        isWishlisted ? 'text-blue-500' : 'hover:text-gray-500 dark:hover:text-gray-300'
                       }`}
                     >
                       <FaRegHeart
@@ -126,7 +123,7 @@ const ProductGrid = ({ products, viewMode }) => {
                       />
                       <p
                         className={`font-medium transition duration-300 ${
-                          isWishlisted ? 'text-blue-500' : ''
+                          isWishlisted ? 'text-blue-500' : 'dark:text-gray-200'
                         }`}
                       >
                         {isWishlisted ? 'Added to Wishlist' : 'Wishlist'}

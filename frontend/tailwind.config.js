@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
         primary: '#F4F4F4',
-        sec:'#F3F5F7'
+        sec: '#F3F5F7',
       },
 
       animation: {
