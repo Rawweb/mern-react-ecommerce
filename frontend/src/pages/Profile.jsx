@@ -3,6 +3,14 @@ import { FiEdit2 } from 'react-icons/fi';
 import OrdersTable from '../components/Layout/OrdersTable';
 import AddressSection from '../components/Layout/AddressSection';
 import WishlistTable from '../components/Layout/WishlistTable';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  FiUser,
+  FiMapPin,
+  FiShoppingBag,
+  FiHeart,
+  FiLogOut,
+} from 'react-icons/fi';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('account');
@@ -90,10 +98,10 @@ const Profile = () => {
   };
 
   const navItems = [
-    { key: 'account', label: 'Account' },
-    { key: 'address', label: 'Address' },
-    { key: 'orders', label: 'Orders' },
-    { key: 'wishlist', label: 'Wishlist' },
+    { key: 'account', label: 'Account', icon: <FiUser /> },
+    { key: 'address', label: 'Address', icon: <FiMapPin /> },
+    { key: 'orders', label: 'Orders', icon: <FiShoppingBag /> },
+    { key: 'wishlist', label: 'Wishlist', icon: <FiHeart /> },
   ];
 
   return (
@@ -122,11 +130,14 @@ const Profile = () => {
                   onClick={() => setActiveTab(item.key)}
                   className={`block rounded-md w-full text-left px-2 py-2 transition ${
                     activeTab === item.key
-                      ? 'border-b-2 border-gray-700'
-                      : 'text-gray-700 dark:text-gray-200 hover:bg-gray-200'
+                      ? 'border-b-2 border-gray-700 text-black dark:text-white'
+                      : 'text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700'
                   }`}
                 >
-                  {item.label}
+                  <span className="flex items-center gap-2">
+                    {item.icon}
+                    {item.label}
+                  </span>
                 </button>
               ))}
               <button className="block w-full text-left text-red-500 hover:text-red-700 mt-4">
@@ -137,7 +148,18 @@ const Profile = () => {
 
           {/* Main Content */}
           <section className="lg:col-span-3 space-y-10">
-            {renderTabContent()}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-10"
+              >
+                {renderTabContent()}
+              </motion.div>
+            </AnimatePresence>
           </section>
         </div>
       </div>

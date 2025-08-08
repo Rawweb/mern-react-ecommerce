@@ -137,86 +137,152 @@ const Cart = () => {
             {/* 1 - Shoping Cart */}
             <div>
               {/* Cart Items */}
-              <div className="flex flex-col lg:flex-row gap-10 px-4 lg:px-16 py-10">
+              <div className="flex flex-col lg:flex-row gap-10  py-10">
                 {/* LEFT: Cart Items Table */}
                 <div className="flex-1">
                   <h2 className="text-xl font-semibold mb-6 dark:text-white">
                     Your Cart
                   </h2>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full table-auto text-left text-sm">
-                      <thead className="border-b border-gray-300 text-gray-500 dark:text-gray-200 uppercase tracking-wide">
-                        <tr>
-                          <th className="py-3">Product</th>
-                          <th className="py-3">Quantity</th>
-                          <th className="py-3">Price</th>
-                          <th className="py-3">Subtotal</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-gray-200">
-                        {cartProducts.map(product => (
-                          <tr key={product.productId} className="align-top">
-                            <td className="py-4">
-                              <div className="flex items-start gap-4">
-                                <img
-                                  src={product.image}
-                                  alt={product.name}
-                                  className="w-12 h-12 object-cover rounded dark:border dark:border-gray-100"
-                                />
-                                <div className="space-y-2">
-                                  <h3 className="font-medium text-gray-900 dark:text-white">
-                                    {product.name}
-                                  </h3>
-                                  <p className="text-gray-500 text-xs dark:text-gray-200">
-                                    Color: {product.color}
-                                  </p>
+                    {/* Desktop: Table */}
+                    <div className="hidden md:block">
+                      <table className="min-w-full table-auto text-left text-sm">
+                        <thead className="border-b border-gray-300 text-gray-500 dark:text-gray-200 uppercase tracking-wide">
+                          <tr>
+                            <th className="py-3">Product</th>
+                            <th className="py-3">Quantity</th>
+                            <th className="py-3">Price</th>
+                            <th className="py-3">Subtotal</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-200">
+                          {cartProducts.map(product => (
+                            <tr key={product.productId} className="align-top">
+                              <td className="py-4">
+                                <div className="flex items-start gap-4">
+                                  <img
+                                    src={product.image}
+                                    alt={product.name}
+                                    className="w-12 h-16 object-cover rounded dark:border dark:border-gray-100"
+                                  />
+                                  <div className="space-y-1">
+                                    <h3 className="font-medium text-gray-900 dark:text-white">
+                                      {product.name}
+                                    </h3>
+                                    <p className="text-gray-500 text-xs dark:text-gray-200">
+                                      Color: {product.color}
+                                    </p>
+                                    <button
+                                      onClick={() =>
+                                        removeItem(product.productId)
+                                      }
+                                      className="text-xs text-gray-400 mt-1 hover:text-red-500 flex items-center gap-1"
+                                    >
+                                      <RiDeleteBin3Line className="text-sm" />{' '}
+                                      Remove
+                                    </button>
+                                  </div>
+                                </div>
+                              </td>
+
+                              <td className="py-4">
+                                <div className="flex w-24 items-center justify-between border rounded-md px-2 py-1">
                                   <button
                                     onClick={() =>
-                                      removeItem(product.productId)
+                                      updateQuantity(product.productId, -1)
                                     }
-                                    className="text-xs text-gray-400 mt-1 hover:text-red-500 flex items-center gap-1"
+                                    className="text-gray-600 dark:text-gray-200 dark:hover:text-gray-400 hover:text-black font-semibold text-lg"
                                   >
-                                    <RiDeleteBin3Line className="text-sm" />{' '}
-                                    Remove
+                                    −
+                                  </button>
+                                  <span className="px-2 dark:text-white">
+                                    {product.quantity}
+                                  </span>
+                                  <button
+                                    onClick={() =>
+                                      updateQuantity(product.productId, 1)
+                                    }
+                                    className="text-gray-600 dark:text-gray-200 dark:hover:text-gray-400 hover:text-black font-semibold text-lg"
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                              </td>
+
+                              <td className="py-4 text-gray-700 dark:text-gray-200">
+                                ${product.price.toFixed(2)}
+                              </td>
+                              <td className="py-4 font-semibold text-gray-900 dark:text-gray-200">
+                                ${(product.quantity * product.price).toFixed(2)}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    {/* Mobile: Cards */}
+                    <div className="md:hidden space-y-6">
+                      {cartProducts.map(product => (
+                        <div
+                          key={product.productId}
+                          className="flex items-start justify-between gap-5 border-b pb-4"
+                        >
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-20 h-24 object-cover rounded dark:border dark:border-gray-300"
+                          />
+                          <div className="flex-1">
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <h3 className="font-medium text-gray-900 dark:text-white">
+                                  {product.name}
+                                </h3>
+                                <p className="text-sm text-gray-500 dark:text-gray-300">
+                                  Color: {product.color}
+                                </p>
+
+                                <div className="mt-3 inline-flex items-center border rounded px-2 py-1 gap-3">
+                                  <button
+                                    onClick={() =>
+                                      updateQuantity(product.productId, -1)
+                                    }
+                                    className="text-gray-500 hover:text-black dark:hover:text-white"
+                                  >
+                                    −
+                                  </button>
+                                  <span className="text-sm dark:text-white">
+                                    {product.quantity}
+                                  </span>
+                                  <button
+                                    onClick={() =>
+                                      updateQuantity(product.productId, 1)
+                                    }
+                                    className="text-gray-500 hover:text-black dark:hover:text-white"
+                                  >
+                                    +
                                   </button>
                                 </div>
                               </div>
-                            </td>
+                              <div className="flex items-center flex-col">
+                                <p className="text-sm font-medium text-gray-900 dark:text-white">
+                                  ${product.price.toFixed(2)}
+                                </p>
 
-                            <td className="py-4">
-                              <div className="flex w-24 items-center justify-between border rounded-md px-2 py-1">
                                 <button
-                                  onClick={() =>
-                                    updateQuantity(product.productId, -1)
-                                  }
-                                  className="text-gray-600 dark:text-gray-200 dark:hover:text-gray-400 hover:text-black font-semibold text-lg"
+                                  onClick={() => removeItem(product.productId)}
+                                  className="text-gray-400 hover:text-red-500"
+                                  title="Remove"
                                 >
-                                  −
-                                </button>
-                                <span className="px-2 dark:text-white">
-                                  {product.quantity}
-                                </span>
-                                <button
-                                  onClick={() =>
-                                    updateQuantity(product.productId, 1)
-                                  }
-                                  className="text-gray-600 dark:text-gray-200 dark:hover:text-gray-400 hover:text-black font-semibold text-lg"
-                                >
-                                  +
+                                  &times;
                                 </button>
                               </div>
-                            </td>
-
-                            <td className="py-4 text-gray-700 dark:text-gray-200">
-                              ${product.price.toFixed(2)}
-                            </td>
-                            <td className="py-4 font-semibold text-gray-900 dark:text-gray-200">
-                              ${(product.quantity * product.price).toFixed(2)}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -396,7 +462,7 @@ const Cart = () => {
         {/* Step 2 */}
         {step === 2 && (
           <>
-            <div className="px-4 lg:px-16 pb-4 ">
+            <div className=" pb-4 ">
               <button
                 onClick={() => setStep(1)}
                 className="text-sm text-black dark:text-white border px-2 py-3 rounded shadow-sm transition duration-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 uppercase"
@@ -405,7 +471,7 @@ const Cart = () => {
               </button>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 px-4 lg:px-16 py-10">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10  py-10">
               {/* LEFT: Form Sections */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Contact Information */}
@@ -612,26 +678,35 @@ const Cart = () => {
                   </button>
                 )}
 
-                {paymentMethod === 'paypal' &&
-                  (isFormComplete ? (
-                    <PayPalButton
-                      amount={cartTotal - discount + shipping}
-                      onSuccess={details => {
-                        setStep(3);
-                        toast.success(
-                          `Thanks ${details.payer.name.given_name}, your payment was successful!`
-                        );
-                      }}
-                      onError={err => {
-                        console.error('PayPal error:', err);
-                        toast.error('Something went wrong with PayPal.');
-                      }}
-                    />
-                  ) : (
-                    <p className="text-sm text-red-500 font-medium">
-                      Please fill in all fields before proceeding to payment.
-                    </p>
-                  ))}
+                {paymentMethod === 'paypal' && (
+                  <>
+                    <div
+                      className={
+                        isFormComplete ? '' : 'pointer-events-none opacity-50'
+                      }
+                    >
+                      <PayPalButton
+                        amount={cartTotal - discount + shipping}
+                        onSuccess={details => {
+                          setStep(3);
+                          toast.success(
+                            `Thanks ${details.payer.name.given_name}, your payment was successful!`
+                          );
+                        }}
+                        onError={err => {
+                          console.error('PayPal error:', err);
+                          toast.error('Something went wrong with PayPal.');
+                        }}
+                      />
+                    </div>
+
+                    {!isFormComplete && (
+                      <p className="text-sm text-red-500 font-medium mt-2">
+                        Please fill in all fields before proceeding to payment.
+                      </p>
+                    )}
+                  </>
+                )}
               </div>
 
               {/* RIGHT: Order Summary */}

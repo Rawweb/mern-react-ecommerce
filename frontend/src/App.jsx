@@ -4,10 +4,13 @@ import UserLayout from './components/Layout/UserLayout';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import ProductDetails from './components/Products/ProductDetails';
+import ProductDetails from './pages/BlogPage';
 import Shop from './pages/Shop';
 import Cart from './components/Cart/Cart';
 import Profile from './pages/Profile';
+import ContactUs from './pages/ContactUs';
+import BlogPage from './pages/BlogPage';
+import BlogDetail from './pages/BlogDetail';
 
 const App = () => {
   return (
@@ -34,7 +37,10 @@ const App = () => {
           <Route path="home" element={<Home />} />
           <Route path="cart" element={<Cart />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="contact-us" element={<ContactUs />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
           {/* Add other user routes here */}
         </Route>
 

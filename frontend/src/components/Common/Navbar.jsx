@@ -42,7 +42,7 @@ const Navbar = () => {
 
         {/* Navigation */}
         <div className="space-x-6 hidden md:flex">
-          {['/home', '/shop', '/products', '/contact-us'].map(path => (
+          {['/home', '/shop', '/blog', '/contact-us'].map(path => (
             <NavLink
               key={path}
               to={path}
