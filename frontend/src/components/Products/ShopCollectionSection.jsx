@@ -29,7 +29,7 @@ const ShopCollectionSection = () => {
         {/* Low Head */}
         <div className="grid grid-cols-1 gap-6 mt-10 md:grid-cols-4 md:grid-rows-2">
           {/* Living Room */}
-          <div className="md:col-span-2 md:row-span-2 relative">
+          <div className="md:col-span-2 md:row-span-2 relative bg-gray-100 dark:bg-gray-800">
             <div className="absolute lg:left-14 lg:top-20 md:left-10 md:top-10 left-14 top-12 lg:space-y-2 md:space-y-0">
               <h1 className="lg:text-3xl md:text-xl font-semibold text-lg text-black dark:text-white">
                 Living Room
@@ -50,8 +50,8 @@ const ShopCollectionSection = () => {
           </div>
 
           {/* Bedroom */}
-          <div className="md:col-span-2 relative">
-            <div className="absolute lg:left-14 lg:top-20 md:left-10 md:top-10 left-8 bottom-20 lg:space-y-2 md:space-y-0">
+          <div className="md:col-span-2 flex p-4 items-end bg-gray-100 dark:bg-gray-800">
+            <div className="w-1/2 pb-5">
               <h1 className="lg:text-3xl md:text-xl font-semibold text-lg text-black dark:text-white">
                 Bedroom
               </h1>
@@ -66,13 +66,13 @@ const ShopCollectionSection = () => {
             <img
               src={bedroom}
               alt="Bedroom"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover overflow-hidden"
             />
           </div>
 
           {/* Kitchen */}
-          <div className="md:col-span-2 relative">
-            <div className="absolute lg:left-14 lg:top-20 md:left-10 md:top-10 left-8 bottom-20 lg:space-y-2 md:space-y-0">
+          <div className="md:col-span-2 flex p-4 items-end bg-gray-100 dark:bg-gray-800">
+            <div className="w-1/2 pb-5">
               <h1 className="lg:text-3xl md:text-xl font-semibold text-lg text-black dark:text-white">
                 Kitchen
               </h1>
@@ -86,8 +86,8 @@ const ShopCollectionSection = () => {
             </div>
             <img
               src={kitchen}
-              alt="Kitchen"
-              className="w-full h-full object-cover"
+              alt="Bedroom"
+              className="w-full h-full object-cover overflow-hidden"
             />
           </div>
         </div>

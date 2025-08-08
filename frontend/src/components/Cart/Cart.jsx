@@ -102,12 +102,12 @@ const Cart = () => {
                 >
                   {/* Step Circle */}
                   <div
-                    className={`rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm dark:bg-white ${
+                    className={`rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm dark:text-white ${
                       isCompleted || isFinalStep
                         ? 'bg-green-500 text-white dark:bg-green-500'
                         : isCurrent
                         ? 'bg-black text-white dark:text-black'
-                        : 'bg-gray-200 text-gray-400 dark:bg-gray-200'
+                        : 'bg-gray-200 text-gray-400 dark:text-gray-300 dark:bg-gray-400'
                     }`}
                   >
                     {number}

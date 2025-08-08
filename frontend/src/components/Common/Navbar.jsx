@@ -8,7 +8,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { SiInstagram, SiFacebook, SiGoogle } from 'react-icons/si';
 import SearchBar from './SearchBar';
 import CartDrawer from '../Layout/CartDrawer';
-import DarkModeToggle from './DarkkModeToggle';
+
 
 const Navbar = () => {
   const [cartDrawerOpen, setcartDrawerOpen] = useState(false);
@@ -50,7 +50,7 @@ const Navbar = () => {
                 `font-medium uppercase transition duration-300 ${
                   isActive
                     ? 'text-blue-500 border-b border-blue-500'
-                    : 'text-gray-900 dark:text-white hover:text-blue-500'
+                    : 'text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-blue-500'
                 }`
               }
             >
@@ -61,10 +61,10 @@ const Navbar = () => {
 
         {/* Icons & Actions */}
         <div className="flex items-center space-x-4">
-          <DarkModeToggle />
+         
 
           <Link to="/profile">
-            <HiOutlineUserCircle className="h-6 w-6 hover:text-blue-500 transition duration-300 dark:text-white" />
+            <HiOutlineUserCircle className="h-6 w-6 hover:text-blue-500 dark:hover:text-blue-500 transition duration-300 dark:text-white" />
           </Link>
 
           <button onClick={toggleCartDrawer} className="relative group">
@@ -79,7 +79,7 @@ const Navbar = () => {
           </div>
 
           <button onClick={toggleNavDrawer} className="md:hidden block">
-            <RiMenuFoldLine className="w-6 h-6 hover:text-blue-500 transition duration-300 dark:text-white" />
+            <RiMenuFoldLine className="w-6 h-6 hover:text-blue-500 dark:hover:text-blue-500 transition duration-300 dark:text-white" />
           </button>
         </div>
       </nav>
@@ -115,7 +115,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between p-6 text-xl dark:text-white">
             <Link className="font-semibold">3legant.</Link>
             <button onClick={toggleNavDrawer}>
-              <MdClose className="h-6 w-6 text-gray-700 dark:text-white hover:text-blue-500 transition duration-300" />
+              <MdClose className="h-6 w-6 text-gray-700 dark:text-white hover:text-red-500 dark:hover:text-red-500 transition duration-300" />
             </button>
           </div>
 
@@ -145,7 +145,7 @@ const Navbar = () => {
               className="flex justify-between items-center p-6 border-b shadow-sm text-sm dark:text-white dark:border-gray-700"
             >
               <Link
-                to="#"
+                to={label === 'Cart' ? '/cart' : '/wishlist'}
                 onClick={toggleNavDrawer}
                 className="font-medium hover:text-blue-500"
               >
@@ -156,11 +156,11 @@ const Navbar = () => {
                 className="flex items-center group"
               >
                 {label === 'Cart' ? (
-                  <LiaShoppingBagSolid className="h-5 w-5 group-hover:text-blue-500 transition" />
+                  <LiaShoppingBagSolid className="h-6 w-6 group-hover:text-blue-500 transition" />
                 ) : (
                   <FaRegHeart className="h-5 w-5 group-hover:text-blue-500 transition" />
                 )}
-                <span className="bg-black dark:bg-blue-500 ml-1 text-white rounded-full w-4 h-4 flex items-center justify-center group-hover:bg-blue-600 transition" />
+                <span className="bg-black dark:bg-blue-500 ml-1 text-white rounded-full size-2 flex items-center justify-center group-hover:bg-blue-600 transition" />
               </button>
             </div>
           ))}
@@ -168,7 +168,7 @@ const Navbar = () => {
           <div className="mt-4 p-6">
             <button
               onClick={toggleNavDrawer}
-              className="bg-black dark:bg-blue-500 text-white py-4 px-6 rounded-md w-full hover:bg-blue-600 transition duration-300"
+              className="bg-black dark:border dark:border-gray-700 dark:hover:text-white text-white py-4 px-6 rounded-md w-full hover:bg-blue-600 transition duration-300"
             >
               <Link to="/login">Sign In</Link>
             </button>

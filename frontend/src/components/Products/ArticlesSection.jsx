@@ -43,23 +43,23 @@ const ArticlesSection = () => {
         {/* Article Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {articles.map((article, index) => (
-            <div key={index} className="flex flex-col gap-4 group">
+            <div key={index} className="flex flex-col group">
               {/* Image with hover scale */}
               <div className="overflow-hidden rounded-md">
                 <img
                   src={article.image}
                   alt={article.alt}
-                  className="transition-transform duration-500 group-hover:scale-110 w-full h-auto"
+                  className="transition-transform duration-500 group-hover:scale-110 w-full h-auto mb-4"
                 />
               </div>
 
               {/* Title */}
-              <p className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white">
+              <p className="font-semibold text-gray-900 dark:text-white">
                 {article.title}
               </p>
 
               {/* Read More Link */}
-              <div className="w-fit md:text-xl border-b-2 border-black dark:border-white hover:border-blue-500 dark:hover:border-blue-400 transition duration-300">
+              <div className="w-fit border-b-2 border-black dark:border-white hover:border-blue-500 dark:hover:border-blue-400 transition duration-300">
                 <Link className="inline-flex items-center gap-2 text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300">
                   <p>Read More</p>
                   <BsArrowRight className="h-4 w-4" />

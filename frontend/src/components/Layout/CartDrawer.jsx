@@ -19,7 +19,7 @@ const CartDrawer = ({ cartDrawerOpen, toggleCartDrawer }) => {
     >
       <div className="flex justify-end p-6">
         <button onClick={toggleCartDrawer}>
-          <MdClose className="h-6 w-6 hover:text-blue-500 dark:text-white transition duration-300" />
+          <MdClose className="h-6 w-6 hover:text-red-500 dark:hover:text-red-500 dark:text-white transition duration-300" />
         </button>
       </div>
 
@@ -44,7 +44,7 @@ const CartDrawer = ({ cartDrawerOpen, toggleCartDrawer }) => {
               toggleCartDrawer();
               navigate('/cart');
             }}
-            className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-blue-500 transition duration-300 dark:border"
+            className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-blue-500 transition duration-300 dark:border dark:border-gray-700"
           >
             View Cart
           </button>

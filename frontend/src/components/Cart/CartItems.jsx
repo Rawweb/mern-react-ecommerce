@@ -18,7 +18,7 @@ const CartItems = () => {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-20 h-24 object-cover rounded border border-gray-700 dark:border dark:border-gray-100"
+                  className="w-20 h-24 object-cover rounded border border-gray-700 dark:border dark:border-gray-500"
                 />
                 <div className="flex flex-col gap-2">
                   <h3 className="font-semibold dark:text-white">
