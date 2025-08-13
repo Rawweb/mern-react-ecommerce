@@ -124,7 +124,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-col p-6 mt-4 gap-4 text-sm dark:text-white">
-            {['/home', '/shop', '/products', '/contact-us'].map(path => (
+            {['/home', '/shop', '/blog', '/contact-us'].map(path => (
               <Link
                 key={path}
                 to={path}
